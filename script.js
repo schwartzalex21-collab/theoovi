@@ -38,10 +38,10 @@
 
     const lerp = (a, b, t) => a + (b - a) * t;
     const tick = () => {
-      ring.x  = lerp(ring.x,  target.x, 0.10);
-      ring.y  = lerp(ring.y,  target.y, 0.10);
-      point.x = lerp(point.x, target.x, 0.32);
-      point.y = lerp(point.y, target.y, 0.32);
+      ring.x  = lerp(ring.x,  target.x, 0.18);
+      ring.y  = lerp(ring.y,  target.y, 0.18);
+      point.x = lerp(point.x, target.x, 0.45);
+      point.y = lerp(point.y, target.y, 0.45);
       cursor.style.transform = `translate3d(${ring.x}px, ${ring.y}px, 0) translate(-50%, -50%)`;
       dot.style.transform    = `translate3d(${point.x}px, ${point.y}px, 0) translate(-50%, -50%)`;
       requestAnimationFrame(tick);
