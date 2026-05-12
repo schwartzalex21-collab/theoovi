@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#87947D"/>
+  
+  <!-- Logomark (O concentric) centrat pe canvas -->
+  <!-- O concentric — cercul gros exterior -->
+  <circle cx="400" cy="180" r="44" fill="none" stroke="#2C353F" stroke-width="8"/>
+  <!-- O concentric — cercul subțire interior -->
+  <circle cx="400" cy="180" r="28" fill="none" stroke="#2C353F" stroke-width="3"/>
+  
+  <!-- Tagline mutat optic puțin mai la dreapta -->
+  <text x="398" y="260" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="500" letter-spacing="6" fill="#2C353F">GENTLY HEAVY</text>
+</svg>

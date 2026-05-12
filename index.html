@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Oovi — Hanorace cu greutate. Gently Heavy.</title>
+  <meta name="description" content="Hanorace cu greutate de 420 GSM, croite să-ți liniștească sistemul nervos. Antracit și Rose, în avans. Comandă acum." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/oovi-logo.svg" />
+</head>
+<body class="page-landing">
+
+  <!-- Soft following cursor -->
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- Initial loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <svg class="loader-mark" viewBox="0 0 100 100" width="72" height="72">
+      <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="3" />
+      <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="1.4" />
+    </svg>
+  </div>
+
+  <!-- Nav -->
+  <header class="nav">
+    <a href="index.html" class="nav-mark" aria-label="The Oovi — acasă">
+      <svg viewBox="0 0 100 100" width="26" height="26" aria-hidden="true">
+        <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="6" />
+        <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2.5" />
+      </svg>
+      <span class="nav-word">THE&nbsp;OOVI</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="produs.html">Produs</a>
+      <a href="#stiinta">Știință</a>
+      <a href="#respira">Respiră</a>
+      <a href="blog.html">Jurnal</a>
+    </nav>
+    <a href="produs.html" class="nav-cta" data-magnetic>Cumpără acum</a>
+  </header>
+
+  <main id="top">
+
+    <!-- ============== HERO ============== -->
+    <section class="hero" data-bg="cream">
+      <div class="hero-particles" aria-hidden="true"></div>
+
+      <div class="hero-grid">
+        <div class="hero-content">
+          <p class="hero-tagline reveal-letters" data-text="GENTLY · HEAVY"></p>
+
+          <h1 class="hero-title">
+            <span class="line"><span>Când</span> <span>lumea</span></span>
+            <span class="line"><span>e</span> <span>prea</span> <em>mult.</em></span>
+          </h1>
+
+          <p class="hero-sub fade-up" data-delay="2.2">
+            Hanorace cu greutate, croite să-ți liniștească sistemul nervos.
+            420&nbsp;de grame de bumbac periat fin, pe metru pătrat.
+            O îmbrățișare pe care o porți zilnic.
+          </p>
+
+          <div class="hero-cta fade-up" data-delay="2.6">
+            <a href="produs.html" class="btn btn-solid" data-magnetic>Cumpără acum</a>
+            <a href="#stiinta" class="btn btn-ghost" data-magnetic>Cum funcționează</a>
+          </div>
+
+          <div class="hero-meta fade-up" data-delay="3.0">
+            <span>Antracit</span><i></i>
+            <span>Rose</span><i></i>
+            <span>Livrare în 3–5 zile</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-mark">
+            <svg viewBox="0 0 200 200" width="100%" height="100%">
+              <circle class="ring ring-outer" cx="100" cy="100" r="72" fill="none" stroke="currentColor" stroke-width="6" />
+              <circle class="ring ring-inner" cx="100" cy="100" r="44" fill="none" stroke="currentColor" stroke-width="2.2" />
+              <circle class="ring ring-pulse" cx="100" cy="100" r="44" fill="none" stroke="currentColor" stroke-width="2.2" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll fade-up" data-delay="3.4" aria-hidden="true">
+        <span>Respiră · Derulează</span>
+        <div class="hero-scroll-line"><i></i></div>
+      </div>
+    </section>
+
+    <!-- ============== PHILOSOPHY ============== -->
+    <section class="philosophy" data-bg="cream">
+      <div class="philosophy-inner">
+        <p class="eyebrow reveal-on-scroll">Filozofie</p>
+        <p class="philosophy-quote reveal-words">
+          Lumea nu va deveni mai liniștită.<br />
+          Dar greutatea potrivită pe umeri îți poate liniști lumea din interior.
+        </p>
+        <div class="philosophy-meta reveal-on-scroll">
+          <span>Deep Pressure Stimulation</span>
+          <span>420&nbsp;GSM</span>
+          <span>Purtabil zilnic</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== SCIENCE ============== -->
+    <section class="science" id="stiinta" data-bg="navy">
+      <div class="science-grid">
+        <div class="science-text">
+          <p class="eyebrow reveal-on-scroll">Știință</p>
+          <h2 class="reveal-words">
+            420 de grame, distribuite egal. Restul îl face sistemul tău nervos.
+          </h2>
+          <p class="science-body reveal-on-scroll">
+            Țesătura aplică o presiune fermă și constantă pe umeri, piept și spate —
+            același principiu pe care îl folosesc păturile cu greutăți în terapia anxietății.
+            Sistemul nervos parasimpatic se activează. Cortizolul scade. Respirația încetinește de la sine.
+          </p>
+          <a href="blog.html" class="link-arrow reveal-on-scroll">
+            <span>Citește despre Deep Pressure Stimulation</span>
+            <svg viewBox="0 0 24 12" width="32" height="14" aria-hidden="true">
+              <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="science-viz" aria-hidden="true">
+          <svg viewBox="0 0 400 400" width="100%" height="100%">
+            <defs>
+              <radialGradient id="ripple" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#87947D" stop-opacity="0.0" />
+                <stop offset="60%" stop-color="#87947D" stop-opacity="0.10" />
+                <stop offset="100%" stop-color="#87947D" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <circle cx="200" cy="200" r="180" fill="url(#ripple)" />
+            <g class="ripple-rings" fill="none" stroke="#D7C9B1" stroke-opacity="0.5">
+              <circle cx="200" cy="200" r="40" />
+              <circle cx="200" cy="200" r="80" />
+              <circle cx="200" cy="200" r="120" />
+              <circle cx="200" cy="200" r="160" />
+            </g>
+            <circle cx="200" cy="200" r="14" fill="#D7C9B1" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat reveal-on-scroll">
+          <span class="stat-num" data-count="31">0</span><span class="stat-suffix">%</span>
+          <p>nivelul mediu cu care scade cortizolul în studiile clinice de deep pressure.</p>
+        </div>
+        <div class="stat reveal-on-scroll" data-delay="0.15">
+          <span class="stat-num" data-count="420">0</span><span class="stat-suffix">&nbsp;gsm</span>
+          <p>greutatea calibrată pentru purtare zilnică — destul cât să te ții, nu cât să te apese.</p>
+        </div>
+        <div class="stat reveal-on-scroll" data-delay="0.3">
+          <span class="stat-num" data-count="5">0</span><span class="stat-suffix">&nbsp;minute</span>
+          <p>atât îți ia, în medie, să simți cum coboară pulsul prima dată când îl porți.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== BREATH ============== -->
+    <section class="breath" id="respira" data-bg="sage">
+      <p class="eyebrow reveal-on-scroll">Pauză</p>
+      <h2 class="breath-title reveal-words">
+        Înainte să mergi mai departe — respiră odată cu noi.
+      </h2>
+      <p class="breath-sub reveal-on-scroll">
+        Patru faze, câte patru secunde fiecare. Box breathing — același pe care îl folosesc terapeuții
+        și sportivii pentru a încetini ritmul cardiac în câteva cicluri.
+      </p>
+
+      <div class="breath-circle-wrap" aria-hidden="true">
+        <div class="breath-glow"></div>
+        <div class="breath-circle">
+          <span class="breath-phase" id="breathPhase">Inspiră</span>
+        </div>
+      </div>
+
+      <p class="breath-foot reveal-on-scroll">
+        Restul paginii te așteaptă. Nu o să fugă.
+      </p>
+    </section>
+
+    <!-- ============== PRODUCT FEATURE (the 2 launch colors) ============== -->
+    <section class="lineup" id="culori" data-bg="cream">
+      <div class="lineup-head">
+        <p class="eyebrow reveal-on-scroll">Lansare</p>
+        <h2 class="reveal-words">Două culori. Două răspunsuri emoționale.</h2>
+        <p class="lineup-sub reveal-on-scroll">
+          Începem cu cele două nuanțe care, în cercetările de psihologia culorii, au cele mai constante efecte asupra cortizolului. Restul vor veni — la cerere.
+        </p>
+      </div>
+
+      <div class="lineup-grid">
+        <article class="product-card reveal-on-scroll" style="--c:#3C3F41">
+          <a href="produs.html?culoare=antracit" class="product-card-link" data-magnetic>
+            <div class="product-card-color">
+              <span class="product-card-badge">Disponibil</span>
+            </div>
+            <div class="product-card-body">
+              <div>
+                <h3>Antracit</h3>
+                <p>Grounding. Te ține așezat în prezent.</p>
+              </div>
+              <div class="product-card-foot">
+                <span class="product-card-price">de la 449 lei</span>
+                <span class="product-card-cta">Cumpără&nbsp;→</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <article class="product-card reveal-on-scroll" data-delay="0.15" style="--c:#B78E8D">
+          <a href="produs.html?culoare=rose" class="product-card-link" data-magnetic>
+            <div class="product-card-color">
+              <span class="product-card-badge">Disponibil</span>
+            </div>
+            <div class="product-card-body">
+              <div>
+                <h3>Rose</h3>
+                <p>Căldură emoțională. Scade cortizolul ca o îmbrățișare.</p>
+              </div>
+              <div class="product-card-foot">
+                <span class="product-card-price">de la 449 lei</span>
+                <span class="product-card-cta">Cumpără&nbsp;→</span>
+              </div>
+            </div>
+          </a>
+        </article>
+      </div>
+
+      <!-- Roadmap -->
+      <div class="roadmap reveal-on-scroll">
+        <p class="roadmap-label">Următoarele nuanțe</p>
+        <div class="roadmap-row">
+          <div class="roadmap-swatch" style="--c:#2C353F">
+            <i></i>
+            <span>Midnight Navy</span>
+            <em>în curând</em>
+          </div>
+          <div class="roadmap-swatch" style="--c:#2D3E33">
+            <i></i>
+            <span>Forest Green</span>
+            <em>în curând</em>
+          </div>
+          <div class="roadmap-swatch" style="--c:#87947D">
+            <i></i>
+            <span>Sage Green</span>
+            <em>în curând</em>
+          </div>
+          <div class="roadmap-swatch" style="--c:#D7C9B1">
+            <i></i>
+            <span>Warm Oat</span>
+            <em>în curând</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== PRODUCT DETAIL TEASER ============== -->
+    <section class="product-teaser" id="produs" data-bg="oat">
+      <div class="product-teaser-media">
+        <div class="product-image parallax-image">
+          <img src="assets/hoodie-sleeve.png" alt="Mâneca hanoracului The Oovi cu însemnul concentric brodat fin" loading="lazy" />
+        </div>
+      </div>
+      <div class="product-teaser-text">
+        <p class="eyebrow reveal-on-scroll">Detalii</p>
+        <h2 class="reveal-words">Un semn discret. Doar pentru tine.</h2>
+        <p class="reveal-on-scroll">
+          Logo-ul brodat pe mânecă e singurul indiciu că porți ceva diferit.
+          Pe afară: un hanorac liniștit, fără declarații.
+          Pe interior: 420 de grame care îți spun, blând, că ești aici.
+        </p>
+        <ul class="product-spec">
+          <li class="reveal-on-scroll"><span>01</span> Bumbac organic, periat fin pe interior</li>
+          <li class="reveal-on-scroll" data-delay="0.1"><span>02</span> 420 GSM — greutatea care nu te strânge, te ține</li>
+          <li class="reveal-on-scroll" data-delay="0.2"><span>03</span> Croială lejeră, umeri căzuți, glugă dublă pentru izolare blândă</li>
+          <li class="reveal-on-scroll" data-delay="0.3"><span>04</span> Șnur din bumbac țesut, fără plastic, fără logo-uri stridente</li>
+        </ul>
+        <a href="produs.html" class="btn btn-solid" data-magnetic>Vezi produsul complet</a>
+      </div>
+    </section>
+
+    <!-- ============== VOICES ============== -->
+    <section class="voices" data-bg="rose">
+      <p class="eyebrow reveal-on-scroll">Voci</p>
+      <h2 class="voices-title reveal-words">
+        În cuvintele celor care îl poartă deja.
+      </h2>
+
+      <div class="voices-grid">
+        <figure class="voice reveal-on-scroll">
+          <blockquote>
+            Îl port la facultate, la bibliotecă, în tren. Nimeni nu știe că e „anxiety support".
+            Arată ca orice hanorac. Eu simt diferența imediat ce îl trag pe mine.
+          </blockquote>
+          <figcaption>Ana, 23 — București</figcaption>
+        </figure>
+        <figure class="voice reveal-on-scroll" data-delay="0.15">
+          <blockquote>
+            Am încercat de toate: terapie, meditație, medicație. Oovi nu înlocuiește nimic.
+            Dar e singurul „tool" pe care îl pot purta în public, oricând, fără să dau explicații.
+          </blockquote>
+          <figcaption>Mihai, 28 — Cluj</figcaption>
+        </figure>
+        <figure class="voice reveal-on-scroll" data-delay="0.3">
+          <blockquote>
+            Greutatea e calibrată perfect. Nu te strânge — te ține.
+            E acea îmbrățișare care nu pleacă atunci când ai nevoie de ea cel mai mult.
+          </blockquote>
+          <figcaption>Maria, 31 — Iași</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============== JOURNAL TEASER ============== -->
+    <section class="journal-teaser" data-bg="cream">
+      <div class="journal-head">
+        <p class="eyebrow reveal-on-scroll">Jurnal</p>
+        <h2 class="reveal-words">Mai mult decât un hanorac. Un mod de a-ți regla zilele.</h2>
+        <a href="blog.html" class="link-arrow reveal-on-scroll">
+          <span>Vezi toate articolele</span>
+          <svg viewBox="0 0 24 12" width="32" height="14" aria-hidden="true">
+            <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="journal-grid">
+        <a class="journal-card reveal-on-scroll" href="blog.html">
+          <p class="journal-card-cat">Știință</p>
+          <h3>Ce este Deep Pressure Stimulation și de ce îți încetinește pulsul</h3>
+          <p class="journal-card-sub">Explicat fără jargon: cum reacționează sistemul nervos parasimpatic la presiunea distribuită egal pe corp.</p>
+          <span class="journal-card-time">7 min de citit</span>
+        </a>
+        <a class="journal-card reveal-on-scroll" href="blog.html" data-delay="0.1">
+          <p class="journal-card-cat">Ritual</p>
+          <h3>5 obiceiuri de seară pentru un sistem nervos mai liniștit</h3>
+          <p class="journal-card-sub">Mici gesturi repetate care, în două săptămâni, schimbă felul în care adormi.</p>
+          <span class="journal-card-time">5 min de citit</span>
+        </a>
+        <a class="journal-card reveal-on-scroll" href="blog.html" data-delay="0.2">
+          <p class="journal-card-cat">Ghid</p>
+          <h3>Cum porți un hanorac cu greutate — ghid pentru începători</h3>
+          <p class="journal-card-sub">Primele zile, primele situații, primele lucruri care te vor surprinde.</p>
+          <span class="journal-card-time">4 min de citit</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============== CLOSING ============== -->
+    <section class="closing" data-bg="cream">
+      <div class="closing-mark" aria-hidden="true">
+        <svg viewBox="0 0 200 200" width="110" height="110">
+          <circle class="ring ring-outer" cx="100" cy="100" r="72" fill="none" stroke="currentColor" stroke-width="7" />
+          <circle class="ring ring-inner" cx="100" cy="100" r="44" fill="none" stroke="currentColor" stroke-width="2.5" />
+        </svg>
+      </div>
+      <h2 class="closing-title reveal-words">
+        Lumea n-o să se liniștească.<br />
+        <em>Dar tu poți.</em>
+      </h2>
+      <p class="closing-sub reveal-on-scroll">Alege o culoare. Restul vine de la sine.</p>
+      <a href="produs.html" class="btn btn-solid btn-large" data-magnetic>Cumpără primul Oovi</a>
+    </section>
+  </main>
+
+  <!-- Floating sticky CTA (mobile/scroll) -->
+  <a href="produs.html" class="floating-cta" id="floatingCta" data-magnetic>
+    <span>Cumpără acum</span>
+    <svg viewBox="0 0 24 12" width="28" height="12" aria-hidden="true">
+      <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-mark">
+          <svg viewBox="0 0 100 100" width="30" height="30" aria-hidden="true">
+            <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="6" />
+            <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2.5" />
+          </svg>
+          <span>THE OOVI</span>
+        </div>
+        <p class="footer-tag">Gently Heavy. Croit în România. Purtat oriunde.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Magazin</h4>
+        <a href="produs.html">Hanorac Antracit</a>
+        <a href="produs.html">Hanorac Rose</a>
+        <a href="#culori">Roadmap nuanțe</a>
+      </div>
+      <div class="footer-col">
+        <h4>Citește</h4>
+        <a href="blog.html">Jurnal</a>
+        <a href="#stiinta">Știință</a>
+        <a href="#respira">Exercițiu respirație</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@theoovi.com">hello@theoovi.com</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The Oovi</span>
+      <span>Respiră · Derulează · Repetă</span>
+    </div>
+  </footer>
+
+  <!-- CDN: Lenis smooth scroll + GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
