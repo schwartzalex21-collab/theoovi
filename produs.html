@@ -53,232 +53,91 @@
 
     <!-- ============== PRODUS HERO ============== -->
     <section class="produs-hero" id="cumpara">
-      <!-- Main Centered Image -->
-      <div class="hero-main-image">
-        <img src="assets/hoodie_front.png" alt="Hanorac Fata" id="mainProdusImage">
+      <!-- Animated Background Blobs -->
+      <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
       </div>
 
+      <!-- Main Centered Image Carousel -->
+      <div class="hero-main-image" id="carouselContainer">
+        <img src="assets/3.png" alt="Hanorac Fata" class="carousel-slide is-active">
+        <img src="assets/1.png" alt="Hanorac Spate" class="carousel-slide">
+        <img src="assets/2.png" alt="Hanorac Detaliu" class="carousel-slide">
+      </div>
       <!-- Thumbnails (Bottom Left) -->
       <div class="hero-thumbnails">
-        <button class="thumb-btn is-active" onclick="document.getElementById('mainProdusImage').src='assets/hoodie_front.png'; document.querySelectorAll('.thumb-btn').forEach(b=>b.classList.remove('is-active')); this.classList.add('is-active');">
-          <img src="assets/hoodie_front.png" alt="Thumb 1">
+        <button class="thumb-btn is-active" data-slide="0">
+          <img src="assets/3.png" alt="Thumb 1">
         </button>
-        <button class="thumb-btn" onclick="document.getElementById('mainProdusImage').src='assets/hoodie_back.png'; document.querySelectorAll('.thumb-btn').forEach(b=>b.classList.remove('is-active')); this.classList.add('is-active');">
-          <img src="assets/hoodie_back.png" alt="Thumb 2">
+        <button class="thumb-btn" data-slide="1">
+          <img src="assets/1.png" alt="Thumb 2">
         </button>
-        <button class="thumb-btn" onclick="document.getElementById('mainProdusImage').src='assets/hoodie_sleeve.png'; document.querySelectorAll('.thumb-btn').forEach(b=>b.classList.remove('is-active')); this.classList.add('is-active');">
-          <img src="assets/hoodie_sleeve.png" alt="Thumb 3">
+        <button class="thumb-btn" data-slide="2">
+          <img src="assets/2.png" alt="Thumb 3">
         </button>
       </div>
 
       <!-- INFO -->
-      <div class="produs-info">
-        <p class="produs-breadcrumb">
-          <a href="index.html">Acasă</a> &nbsp;·&nbsp;
-          <a href="index.html#culori">Culori</a> &nbsp;·&nbsp;
-          <span id="breadcrumbColor">Antracit</span>
-        </p>
-
-        <h1 class="produs-title">Hanorac cu greutate</h1>
-
-        <div class="produs-price">
-          <strong><s class="price-old">450</s> 299,99 lei</strong>
-        </div>
-
-        <!-- Color picker -->
-        <div class="produs-colors">
-          <h4>Culoare</h4>
-          <div class="color-row">
-            <label class="color-swatch is-active" style="--c:#3C3F41">
-              <input type="radio" name="culoare" value="antracit" hidden checked />
-              <i></i>
-              <span>Antracit</span>
-            </label>
-            <label class="color-swatch" style="--c:#B78E8D">
-              <input type="radio" name="culoare" value="rose" hidden />
-              <i></i>
-              <span>Rose</span>
-            </label>
-            <div class="color-swatch is-disabled" style="--c:#2C353F" title="În curând">
-              <i></i>
-              <span>În curând</span>
-            </div>
-            <div class="color-swatch is-disabled" style="--c:#87947D" title="În curând">
-              <i></i>
-              <span>În curând</span>
+      <div class="produs-info compact-layout">
+        
+        <!-- BOX 1: Details -->
+        <div class="produs-box details-box">
+          <h1 class="produs-title-compact">WEIGHTED HOODIE</h1>
+          <p class="produs-desc-compact">Hanorac cu greutate 420 GSM. Bumbac organic periat fin, care calmează sistemul nervos.</p>
+          
+          <hr class="produs-divider">
+          
+          <div class="produs-colors compact">
+            <h4 class="produs-label">Culorile de ales</h4>
+            <div class="color-row">
+              <label class="color-swatch is-active" style="--c:#3C3F41">
+                <input type="radio" name="culoare" value="antracit" hidden checked />
+                <i></i>
+              </label>
+              <label class="color-swatch" style="--c:#B78E8D">
+                <input type="radio" name="culoare" value="rose" hidden />
+                <i></i>
+              </label>
+              <div class="color-swatch is-disabled" style="--c:#2C353F" title="În curând">
+                <i></i>
+              </div>
+              <div class="color-swatch is-disabled" style="--c:#87947D" title="În curând">
+                <i></i>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Size picker -->
-        <div class="produs-sizes">
-          <h4>
-            <span>Mărime</span>
-            <button type="button" class="size-guide-link" data-modal-open="sizeGuide">Ghid mărimi</button>
-          </h4>
-          <div class="size-row">
-            <button class="size-pill">XS</button>
-            <button class="size-pill">S</button>
-            <button class="size-pill is-active">M</button>
-            <button class="size-pill">L</button>
-            <button class="size-pill">XL</button>
-            <button class="size-pill">XXL</button>
+          
+          <div class="produs-sizes compact">
+            <h4 class="produs-label">Dimensiunea <span style="letter-spacing: normal;">(<span id="selectedSizeLabel">M</span>)</span></h4>
+            <div class="size-row">
+              <button class="size-pill is-disabled" disabled>XS</button>
+              <button class="size-pill">S</button>
+              <button class="size-pill is-active">M</button>
+              <button class="size-pill">L</button>
+              <button class="size-pill">XL</button>
+              <button class="size-pill is-disabled" disabled>XXL</button>
+            </div>
           </div>
+          
+          <hr class="produs-divider">
+          
+          <p class="availability-text" style="margin-bottom: 0.5rem;">Disponibil din 01.10.2026</p>
+          <span class="size-guide-link compact" data-modal-open="sizeGuide" style="cursor: pointer; text-decoration: underline;">Ghid mărimi</span>
         </div>
 
-        <!-- Actions -->
-        <div class="produs-actions">
-          <button type="button" class="btn btn-solid" data-magnetic data-cart-open>Pre-comandă · 299,99 lei</button>
-          <button class="icon-btn" aria-label="Salvează în lista de dorințe">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
+        <!-- BOX 2: Action -->
+        <div class="produs-box action-box">
+          <button type="button" class="btn-action-compact" data-cart-open>
+            <span class="btn-label">Adaugă în coș</span>
+            <span class="btn-price">RON 299,99</span>
           </button>
         </div>
 
-        <!-- Promises removed for compact layout -->
       </div>
     </section>
 
-    <!-- ============== DEEP DIVE ============== -->
-    <section class="produs-deep" data-bg="cream">
-      <div>
-        <p class="eyebrow reveal-on-scroll">Despre greutate</p>
-        <h2 class="reveal-words">Cum reușesc 420 de grame să-ți încetinească pulsul.</h2>
-        <p class="reveal-on-scroll">
-          Țesătura este construită din două straturi: bumbac organic periat fin la exterior,
-          căptușeală densă în interior. Greutatea nu vine din materiale auxiliare —
-          vine din modul în care firele sunt împletite.
-        </p>
-        <p class="reveal-on-scroll" data-delay="0.1">
-          Când îl pui pe tine, presiunea se distribuie egal pe trapez, umeri și partea superioară a spatelui.
-          Sistemul nervos parasimpatic se activează. Respirația încetinește.
-          Cortizolul începe să coboare în câteva minute — fără să fii nevoit să-ți spui să te liniștești.
-        </p>
-        <a href="blog.html" class="link-arrow reveal-on-scroll" data-delay="0.2">
-          <span>Citește studiul complet</span>
-          <svg viewBox="0 0 24 12" width="32" height="14" aria-hidden="true">
-            <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-
-      <div class="deep-stats reveal-on-scroll">
-        <div class="deep-stat">
-          <strong>420 GSM</strong>
-          <span>greutatea per metru pătrat. Echivalentul unei pături ușoare, distribuit pe corp.</span>
-        </div>
-        <div class="deep-stat">
-          <strong>2 straturi</strong>
-          <span>bumbac periat fin la exterior, căptușeală densă la interior — fără greutăți artificiale.</span>
-        </div>
-        <div class="deep-stat">
-          <strong>180 minute</strong>
-          <span>durata medie de purtare după care utilizatorii raportează somn mai profund.</span>
-        </div>
-        <div class="deep-stat">
-          <strong>30 spălări</strong>
-          <span>fără pierdere semnificativă a structurii. Greutatea se păstrează.</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============== FAQ ============== -->
-    <section class="faq" data-bg="cream">
-      <p class="eyebrow reveal-on-scroll">Întrebări frecvente</p>
-      <h2 class="reveal-words">Ce ar trebui să știi înainte să-l porți.</h2>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span>Cum se simte un hanorac cu greutate față de unul obișnuit?</span>
-          <i></i>
-        </button>
-        <div class="faq-a">
-          <p>În primele câteva minute simți o presiune blândă pe umeri și piept — similar cu o îmbrățișare ușoară.
-          După 5–10 minute, presiunea devine fundalul comod al zilei. Nu te apasă, nu te transpiră.
-          Mulți utilizatori spun că simt o „așezare" emoțională, fără să-și dea seama imediat de unde vine.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span>Pot să-l port la birou sau la sală?</span>
-          <i></i>
-        </button>
-        <div class="faq-a">
-          <p>La birou — absolut. Bumbacul respiră, iar greutatea nu te încălzește mai mult decât un hanorac obișnuit
-          de iarnă. La sală nu îl recomandăm: e gândit pentru perioade de stat, nu pentru efort fizic intens.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span>Cum îl spăl?</span>
-          <i></i>
-        </button>
-        <div class="faq-a">
-          <p>Mașină, 30°C, întors pe dos. Fără înălbitori, fără uscător. Se usucă pe orizontală pentru a păstra forma.
-          După 30 de spălări structura rămâne intactă — greutatea nu „cade".</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span>Mă ajută cu adevărat pentru anxietate?</span>
-          <i></i>
-        </button>
-        <div class="faq-a">
-          <p>Oovi nu este un dispozitiv medical și nu înlocuiește terapia sau medicația prescrisă.
-          Folosește principiul deep pressure stimulation, demonstrat în studii clinice să scadă cortizolul
-          și să crească serotonina la mulți oameni. Funcționează cel mai bine ca tool complementar:
-          îmbrățișare constantă pentru momentele când ai nevoie să te „așezi" în corp.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span>Când primesc hanoracul dacă pre-comand acum?</span>
-          <i></i>
-        </button>
-        <div class="faq-a">
-          <p>Lansăm pe 1 octombrie 2026. Toate pre-comenzile pleacă în săptămâna lansării — curierul ajunge la tine în 3–5 zile lucrătoare. Livrarea e gratuită pentru pre-comenzi, oriunde în România.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span>De ce e mai ieftin la pre-comandă?</span>
-          <i></i>
-        </button>
-        <div class="faq-a">
-          <p>299,99 lei vs. 450 lei la preț final — diferența nu e un truc de marketing, e o investiție mutuală. Pre-comenzile ne ajută să producem prima serie fără să împrumutăm bani la dobândă; tu primești prețul real al unei serii mici. După 1 octombrie, prețul revine la 450 lei pentru re-stocuri.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span>Pot să-l returnez dacă nu-mi place?</span>
-          <i></i>
-        </button>
-        <div class="faq-a">
-          <p>Da, în 30 de zile, fără să ne dai un motiv. Trimite-l înapoi în starea inițială și îți returnăm banii integral.
-          Plătim noi transportul retur. Ne dorim să iubești ce porți — sau să nu-l porți deloc.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============== CLOSING ============== -->
-    <section class="closing" data-bg="cream">
-      <div class="closing-mark" aria-hidden="true">
-        <svg viewBox="0 0 200 200" width="110" height="110">
-          <circle class="ring ring-outer" cx="100" cy="100" r="72" fill="none" stroke="currentColor" stroke-width="7" />
-          <circle class="ring ring-inner" cx="100" cy="100" r="44" fill="none" stroke="currentColor" stroke-width="2.5" />
-        </svg>
-      </div>
-      <h2 class="closing-title reveal-words">Începe cu o culoare.<br /><em>Restul vine de la sine.</em></h2>
-      <p class="closing-sub reveal-on-scroll">Pre-comandă la 299,99 lei. 30 de zile să-l încerci după livrare — dacă nu se simte ca al tău, primești banii înapoi.</p>
-      <a href="#cumpara" class="btn btn-solid btn-large" data-magnetic>Pre-comandă acum · 299,99 lei</a>
-    </section>
   </main>
 
   <!-- Mini-cart drawer -->
@@ -379,49 +238,7 @@
     </div>
   </div>
 
-  <a href="#cumpara" class="floating-cta" id="floatingCta" data-magnetic>
-    <span>Pre-comandă · 299,99 lei</span>
-    <svg viewBox="0 0 24 12" width="28" height="12" aria-hidden="true">
-      <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </a>
 
-  <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-mark">
-          <svg viewBox="0 0 100 100" width="30" height="30" aria-hidden="true">
-            <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="6" />
-            <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2.5" />
-          </svg>
-          <span>THE OOVI</span>
-        </div>
-        <p class="footer-tag">Gently Heavy. Croit în România. Purtat oriunde.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Magazin</h4>
-        <a href="produs.html">Hanorac Antracit</a>
-        <a href="produs.html">Hanorac Rose</a>
-        <a href="index.html#culori">Roadmap nuanțe</a>
-      </div>
-      <div class="footer-col">
-        <h4>Citește</h4>
-        <a href="blog.html">Jurnal</a>
-        <a href="index.html#stiinta">Știință</a>
-        <a href="index.html#respira">Exercițiu respirație</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="mailto:hello@theoovi.com">hello@theoovi.com</a>
-        <a href="#">Instagram</a>
-        <a href="#">TikTok</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 The Oovi</span>
-      <span>Respiră · Derulează · Repetă</span>
-    </div>
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -432,69 +249,178 @@
     // Produs-specific interactivity
     (() => {
 
-      const colorData = {
-        antracit: { c: '#3C3F41', name: 'Antracit', sub: 'Antracit. Grounding. Te ține așezat în prezent.' },
-        rose:     { c: '#B78E8D', name: 'Rose',     sub: 'Rose. Căldură emoțională. Scade cortizolul ca o îmbrățișare.' },
-      };
-      const cover = document.getElementById('produsCover');
-      const subtitle = document.getElementById('produsSubtitle');
-      const breadcrumb = document.getElementById('breadcrumbColor');
-      const radios = document.querySelectorAll('input[name="culoare"]');
+      // Infinite Scroll Carousel
+      const slides = document.querySelectorAll('.carousel-slide');
+      let currentIdx = 0;
+      let animating = false;
 
-      // Read ?culoare= from URL
-      const params = new URLSearchParams(window.location.search);
-      const requested = params.get('culoare');
-      if (requested && colorData[requested]) {
-        const r = document.querySelector(`input[name="culoare"][value="${requested}"]`);
-        if (r) r.checked = true;
+      function gotoSlide(index, direction) {
+        if (animating || slides.length === 0) return;
+        animating = true;
+
+        const currentSlide = slides[currentIdx];
+        const nextIdx = (index + slides.length) % slides.length;
+        const nextSlide = slides[nextIdx];
+
+        const tl = gsap.timeline({
+          onComplete: () => {
+            currentSlide.classList.remove('is-active');
+            nextSlide.classList.add('is-active');
+            
+            // Update thumbnails
+            document.querySelectorAll('.thumb-btn').forEach((b, i) => {
+              b.classList.toggle('is-active', i === nextIdx);
+            });
+            
+            currentIdx = nextIdx;
+            animating = false;
+          }
+        });
+
+        // Current slide animates out
+        tl.to(currentSlide, {
+          y: direction === 'down' ? -100 : 100,
+          opacity: 0,
+          filter: 'blur(10px)',
+          duration: 0.8,
+          ease: 'power2.inOut'
+        });
+
+        // Next slide animates in
+        gsap.set(nextSlide, {
+          y: direction === 'down' ? 100 : -100,
+          opacity: 0,
+          filter: 'blur(10px)'
+        });
+        nextSlide.classList.add('is-active');
+
+        tl.to(nextSlide, {
+          y: 0,
+          opacity: 1,
+          filter: 'blur(0px)',
+          duration: 0.8,
+          ease: 'power2.inOut'
+        }, 0);
       }
 
-      const apply = (val) => {
-        const data = colorData[val] || colorData.antracit;
-        if (cover) {
-          cover.style.setProperty('--c', data.c);
-          if (val === 'antracit') {
-            cover.style.backgroundImage = "url('assets/hoodie_anthracite_full.png')";
-            cover.style.backgroundSize = "cover";
-            cover.style.backgroundPosition = "center";
-            cover.classList.remove('no-image');
-          } else {
-            cover.style.backgroundImage = "none";
-            cover.classList.add('no-image');
+      window.addEventListener('wheel', (e) => {
+        // Prevent default scrolling behavior
+        e.preventDefault();
+        if (Math.abs(e.deltaY) < 10) return; // ignore tiny scrolls
+        
+        if (e.deltaY > 0) {
+          gotoSlide(currentIdx + 1, 'down');
+        } else {
+          gotoSlide(currentIdx - 1, 'up');
+        }
+      }, { passive: false });
+
+      // Touch support
+      let touchStartY = 0;
+      window.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+      });
+      window.addEventListener('touchend', (e) => {
+        // Ignore swipes on the fixed bottom sheet on mobile
+        if (e.target.closest('.produs-info.compact-layout')) return;
+
+        const touchEndY = e.changedTouches[0].clientY;
+        if (touchStartY - touchEndY > 50) {
+          gotoSlide(currentIdx + 1, 'down');
+        } else if (touchEndY - touchStartY > 50) {
+          gotoSlide(currentIdx - 1, 'up');
+        }
+      });
+
+      // Thumbnail clicks
+      document.querySelectorAll('.thumb-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const slideIdx = parseInt(btn.dataset.slide);
+          if (slideIdx === currentIdx) return;
+          
+          const direction = slideIdx > currentIdx ? 'down' : 'up';
+          gotoSlide(slideIdx, direction);
+        });
+      });
+
+      function updateImageSources(color) {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const thumbs = document.querySelectorAll('.thumb-btn img');
+        
+        if (color === 'rose') {
+          if (slides.length >= 3) {
+            slides[0].src = 'assets/4.png';
+            slides[1].src = 'assets/5.png';
+            slides[2].src = 'assets/6.png';
+          }
+          if (thumbs.length >= 3) {
+            thumbs[0].src = 'assets/4.png';
+            thumbs[1].src = 'assets/5.png';
+            thumbs[2].src = 'assets/6.png';
+          }
+        } else {
+          if (slides.length >= 3) {
+            slides[0].src = 'assets/3.png';
+            slides[1].src = 'assets/1.png';
+            slides[2].src = 'assets/2.png';
+          }
+          if (thumbs.length >= 3) {
+            thumbs[0].src = 'assets/3.png';
+            thumbs[1].src = 'assets/1.png';
+            thumbs[2].src = 'assets/2.png';
           }
         }
-        if (subtitle) subtitle.textContent = data.sub;
-        if (breadcrumb) breadcrumb.textContent = data.name;
+      }
+
+      // Color swatches (just for active state)
+      const applyColor = (val) => {
         document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('is-active'));
         const active = document.querySelector(`input[name="culoare"][value="${val}"]`);
         if (active) active.closest('.color-swatch')?.classList.add('is-active');
+        
+        // Update hero class for background and image filters
+        const hero = document.getElementById('cumpara');
+        if (hero) {
+          if (val === 'rose') {
+            hero.classList.add('is-rose');
+            updateImageSources('rose');
+          } else {
+            hero.classList.remove('is-rose');
+            updateImageSources('antracit');
+          }
+        }
       };
 
       document.querySelectorAll('.color-swatch:not(.is-disabled)').forEach((swatch) => {
-        swatch.addEventListener('click', (e) => {
+        swatch.addEventListener('click', () => {
           const radio = swatch.querySelector('input[name="culoare"]');
           if (!radio) return;
           radio.checked = true;
-          apply(radio.value);
+          applyColor(radio.value);
         });
       });
 
-      // Initial
-      const checked = document.querySelector('input[name="culoare"]:checked');
-      if (checked) apply(checked.value);
+      // Read ?culoare= from URL (e.g. produs.html?culoare=rose) and pre-select.
+      // Routed from the homepage lineup cards.
+      try {
+        const urlColor = new URLSearchParams(window.location.search).get('culoare');
+        if (urlColor === 'antracit' || urlColor === 'rose') {
+          const radio = document.querySelector(`input[name="culoare"][value="${urlColor}"]`);
+          if (radio) {
+            radio.checked = true;
+            applyColor(urlColor);
+          }
+        }
+      } catch (e) { /* old browsers: no-op */ }
 
       // Size pills
+      const sizeLabel = document.getElementById('selectedSizeLabel');
       document.querySelectorAll('.size-pill').forEach((pill) => {
         pill.addEventListener('click', () => {
+          if (pill.classList.contains('is-disabled')) return;
           document.querySelectorAll('.size-pill').forEach(p => p.classList.remove('is-active'));
           pill.classList.add('is-active');
-        });
-      });
-
-      // FAQ accordion
-      document.querySelectorAll('.faq-q').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          btn.parentElement.classList.toggle('is-open');
+          if (sizeLabel) sizeLabel.textContent = pill.textContent;
         });
       });
 

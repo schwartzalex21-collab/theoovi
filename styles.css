@@ -1126,6 +1126,10 @@ body.with-cinemagraph .hero-mark { z-index: 3; mix-blend-mode: difference; opaci
    PRODUS PAGE
    ============================================================ */
 /* page-produs is a flag — bg/color come from default body + bg-* classes */
+.page-produs {
+  overflow: hidden;
+  height: 100vh;
+}
 
 .produs-hero {
   height: 100vh;
@@ -1134,6 +1138,72 @@ body.with-cinemagraph .hero-mark { z-index: 3; mix-blend-mode: difference; opaci
   justify-content: center;
   position: relative;
   background: #1A1C1E;
+}
+
+/* Background Blobs */
+.bg-blobs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.75;
+  animation: blob-float 20s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #7a7d80 0%, transparent 70%);
+  top: -100px;
+  left: -100px;
+}
+
+.blob-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #8a8d90 0%, transparent 70%);
+  bottom: -50px;
+  right: -50px;
+  animation-duration: 25s;
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, #9a9da0 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 15s;
+  animation-delay: -2s;
+}
+
+@keyframes blob-float {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -20px) scale(1.05); }
+  100% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+/* Rose Variant Styles */
+.produs-hero.is-rose .blob-1 {
+  background: radial-gradient(circle, #B78E8D 0%, transparent 70%);
+}
+.produs-hero.is-rose .blob-2 {
+  background: radial-gradient(circle, #C89F9E 0%, transparent 70%);
+}
+.produs-hero.is-rose .blob-3 {
+  background: radial-gradient(circle, #D9B0AF 0%, transparent 70%);
 }
 /* NEW LAYOUT */
 .hero-main-image {
@@ -1150,12 +1220,15 @@ body.with-cinemagraph .hero-mark { z-index: 3; mix-blend-mode: difference; opaci
   pointer-events: none;
 }
 .hero-main-image img {
+  position: absolute;
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  mix-blend-mode: screen;
-  filter: contrast(1.5) brightness(0.9);
-  animation: float 6s ease-in-out infinite;
+  opacity: 0;
+  transition: none;
+}
+.hero-main-image img.is-active {
+  opacity: 1;
 }
 
 @keyframes float {
@@ -1166,7 +1239,7 @@ body.with-cinemagraph .hero-mark { z-index: 3; mix-blend-mode: difference; opaci
 
 .hero-thumbnails {
   position: absolute;
-  bottom: 2rem;
+  bottom: 3rem;
   left: 2rem;
   z-index: 10;
   display: flex;
@@ -1194,7 +1267,7 @@ body.with-cinemagraph .hero-mark { z-index: 3; mix-blend-mode: difference; opaci
 .thumb-btn img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 6px;
 }
 .thumb-btn:hover {
@@ -1206,26 +1279,29 @@ body.with-cinemagraph .hero-mark { z-index: 3; mix-blend-mode: difference; opaci
 }
 
 .produs-info {
-  width: 400px;
+  width: 360px;
   max-width: 100%;
+  position: absolute;
+  bottom: 3rem;
+  right: 2rem;
+  height: max-content;
+  z-index: 10;
+}
+.produs-info.compact-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.produs-box {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(30px) saturate(140%);
   -webkit-backdrop-filter: blur(30px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 18px;
-  padding: 1rem;
+  border-radius: 16px;
+  padding: 1.5rem;
   box-shadow:
     0 40px 80px -30px rgba(0,0,0,0.55),
     inset 0 1px 0 rgba(255,255,255,0.1);
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  height: max-content;
-  display: flex;
-  flex-direction: column;
-  z-index: 10;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.18) transparent;
 }
 .produs-info::-webkit-scrollbar { width: 5px; }
 .produs-info::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 4px; }
@@ -3264,4 +3340,231 @@ body.bg-sage .glass-nav a:hover {
 .produs-title {
   font-size: clamp(1.9rem, 3vw, 2.6rem) !important;
   margin-bottom: 0.6rem !important;
+}
+
+/* ============================================================
+   PERFORMANCE & ACCELERATION (Fix Sacadatu)
+   ============================================================ */
+/* Forțează accelerarea hardware (GPU) pentru elementele cu blur (glassmorphism),
+   astfel încât să nu mai sacadeze la scroll (în special pe Safari/iOS/macOS). */
+.floating-header,
+.pill-logo,
+.pill-toggle,
+.glass-menu,
+.nav,
+.thanks-card {
+  will-change: transform, backdrop-filter;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* ============================================================
+   ACT 5: CHOOSE SECTION
+   ============================================================ */
+.choose-grid {
+  margin-top: clamp(3rem, 5vw, 5rem);
+}
+
+.choose-card {
+  background: color-mix(in srgb, var(--white) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--white) 80%, transparent);
+}
+
+.product-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: color-mix(in srgb, var(--cream) 40%, transparent);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.5s var(--ease-calm);
+}
+
+.choose-card:hover .product-card-image img {
+  transform: scale(1.05);
+}
+
+/* Nav Dark Theme */
+.nav-is-dark .pill-logo,
+.nav-is-dark .pill-toggle {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: var(--cream) !important;
+}
+
+.nav-is-dark .glass-menu {
+  background: rgba(26, 26, 26, 0.8) !important;
+}
+
+/* ============================================================
+   COMPACT PRODUCT LAYOUT
+   ============================================================ */
+.produs-title-compact {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: var(--cream) !important;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.produs-desc-compact {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6) !important;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.produs-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 1.2rem 0;
+}
+
+.produs-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5) !important;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.produs-box-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.availability-text {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.size-guide-link.compact {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--white) !important;
+  opacity: 1 !important;
+}
+
+.produs-box.action-box {
+  padding: 0;
+  overflow: hidden;
+}
+
+.btn-action-compact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  background: var(--cream);
+  color: var(--midnight-navy) !important;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-action-compact:hover {
+  background: #fff;
+}
+
+.btn-action-compact .btn-label {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: inherit !important;
+}
+
+.btn-action-compact .btn-price {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: inherit !important;
+}
+
+.produs-colors.compact, .produs-sizes.compact {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .produs-hero {
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+  }
+  .hero-main-image {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    height: 45vh;
+    margin-bottom: 1rem;
+  }
+  .hero-thumbnails {
+    position: relative;
+    bottom: auto;
+    top: auto;
+    left: auto;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2rem;
+    background: transparent;
+    border: none;
+    backdrop-filter: none;
+  }
+  .produs-info.compact-layout {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 45vh; /* Folosim height fix pentru a forța scroll-ul */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Pentru scroll fluid pe iOS */
+    background: rgba(26, 28, 30, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px 20px 0 0;
+    padding: 1.5rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+  }
+  
+  .produs-info.compact-layout::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    margin: -0.5rem auto 0.5rem auto;
+    flex-shrink: 0;
+  }
 }

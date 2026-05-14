@@ -1,0 +1,538 @@
+/* ============================================================
+   THE OOVI — Home polish (v3, fluid + minimal)
+   ------------------------------------------------------------
+   Homepage is now 5 sections only:
+     1. Hero        (cream)
+     2. Lineup      (cream → cream-oat → cream-sage edge)
+     3. Breath      (sage edge → sage core → sage-rose edge)
+     4. Voices      (sage-rose edge → rose core → rose-cream edge)
+     5. Closing     (rose-cream edge → cream)
+
+   Each section's TOP color = previous section's BOTTOM color,
+   so the page reads as a single, continuous gradient. No seams.
+
+   1. KILL LAG (body transition off + content-visibility off mobile)
+   2. STRONG GLASS for voices + closing frame
+   3. CONTINUOUS GRADIENT bg per section (no hard color edges)
+   4. ROOM TO BREATHE — slightly larger paddings than v2
+   5. LINEUP keeps hover-driven interactive bg overlay
+   ============================================================ */
+
+/* ---------- 1. KILL LAG ---------- */
+body {
+  transition: none !important;
+  background: var(--cream) !important;
+  color: var(--ink) !important;
+}
+body.bg-cream, body.bg-navy, body.bg-sage, body.bg-oat, body.bg-rose {
+  background: var(--cream) !important;
+  color: var(--ink) !important;
+}
+
+/* GPU-promote glass layers; they get cached as composite layers
+   instead of being re-rasterised on every scroll frame. */
+.voices .voice,
+.closing::after,
+.hero-meta {
+  transform: translateZ(0);
+  isolation: isolate;
+  will-change: transform;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .voices .voice,
+  .closing::after,
+  .hero-meta {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+  }
+}
+
+html.is-scrolling .hero-mark,
+html.is-scrolling .hero-mark .ring-outer,
+html.is-scrolling .hero-mark .ring-inner,
+html.is-scrolling .hero-mark .ring-pulse,
+html.is-scrolling .hero-particles,
+html.is-scrolling .closing-mark svg {
+  animation-play-state: paused !important;
+}
+/* DELIBERATELY NOT pausing .breath-circle / .breath-glow during
+   scroll: their CSS animation must stay in step with the JS
+   setInterval that cycles the "Inspiră / Reține / Expiră / Reține"
+   text. Pausing one and not the other was producing the desync
+   the user reported (text said Inspiră while circle was still). */
+
+/* ---------- 2. GLASS — only on voices, closing, hero-meta ---------- */
+:root {
+  --glass-blur: 22px;
+  --glass-bg-dark:  rgba(255, 255, 255, 0.14);
+  --glass-bg-light: rgba(255, 255, 255, 0.58);
+  --glass-shadow:
+    0 30px 60px -25px rgba(0, 0, 0, 0.32),
+    0 8px 24px -12px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.voices-grid .voice {
+  background: var(--glass-bg-dark) !important;
+  backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 40px 80px -30px rgba(0, 0, 0, 0.42),
+    0 12px 24px -12px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38) !important;
+}
+
+.hero-meta {
+  display: inline-flex !important;
+  padding: 0.6rem 1.1rem !important;
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  border-radius: 999px !important;
+  box-shadow:
+    0 14px 30px -18px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+}
+
+.closing { position: relative; isolation: isolate; }
+.closing > * { position: relative; z-index: 2; }
+.closing::after {
+  content: '';
+  position: absolute;
+  inset: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 5vw, 4rem);
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  box-shadow: var(--glass-shadow);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ============================================================
+   3. CONTINUOUS GRADIENT FLOW
+   ------------------------------------------------------------
+   Bridge colors at each section boundary (computed in mind):
+     hero       :  cream  →  cream
+     lineup     :  cream  →  cream-sage edge (mix sage 28%)
+     breath     :  cream-sage  →  sage core  →  sage-rose edge
+     voices     :  sage-rose  →  rose core  →  rose-cream edge
+     closing    :  rose-cream  →  cream
+   ============================================================ */
+
+.hero,
+.lineup,
+.breath,
+.voices,
+.closing {
+  position: relative;
+  isolation: isolate;
+}
+.hero::before,
+.lineup::before,
+.breath::before,
+.voices::before,
+.closing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --- HERO --- cream throughout, atmospheric radials kept AWAY
+   from top/bottom edges so the linear stop "owns" each boundary
+   and the next section continues without any visible seam. */
+.hero::before {
+  background:
+    /* radials positioned around the section's middle, NOT edges */
+    radial-gradient(45% 35% at 95% 45%, color-mix(in srgb, var(--rose) 22%, transparent), transparent 70%),
+    radial-gradient(40% 30% at 5% 55%,   color-mix(in srgb, var(--oat)  20%, transparent), transparent 75%),
+    linear-gradient(180deg,
+      var(--cream) 0%,
+      var(--cream) 100%
+    );
+}
+
+/* --- LINEUP --- cream → cream-sage edge.
+   Interactive: hover Antracit / Rose drifts the centered radials.
+   All radials confined to the middle 60% so edges stay clean. */
+.lineup::before {
+  background:
+    radial-gradient(45% 35% at 20% 50%, color-mix(in srgb, var(--anthracite) 14%, transparent), transparent 70%),
+    radial-gradient(45% 35% at 80% 50%, color-mix(in srgb, var(--rose) 16%, transparent), transparent 70%),
+    linear-gradient(180deg,
+      var(--cream) 0%,
+      var(--cream) 25%,
+      color-mix(in srgb, var(--cream) 80%, var(--oat) 20%) 70%,
+      color-mix(in srgb, var(--cream) 60%, var(--sage) 40%) 100%
+    );
+  transition: background 0.9s var(--ease-calm);
+}
+.lineup.is-hover-antracit::before {
+  background:
+    radial-gradient(60% 45% at 25% 50%, color-mix(in srgb, var(--anthracite) 30%, transparent), transparent 75%),
+    radial-gradient(30% 25% at 85% 50%, color-mix(in srgb, var(--rose) 6%, transparent), transparent 75%),
+    linear-gradient(180deg,
+      var(--cream) 0%,
+      color-mix(in srgb, var(--cream) 85%, var(--anthracite) 15%) 50%,
+      color-mix(in srgb, var(--cream) 60%, var(--sage) 40%) 100%
+    );
+}
+.lineup.is-hover-rose::before {
+  background:
+    radial-gradient(30% 25% at 15% 50%, color-mix(in srgb, var(--anthracite) 6%, transparent), transparent 75%),
+    radial-gradient(60% 45% at 75% 50%, color-mix(in srgb, var(--rose) 36%, transparent), transparent 75%),
+    linear-gradient(180deg,
+      var(--cream) 0%,
+      color-mix(in srgb, var(--cream) 80%, var(--rose) 20%) 50%,
+      color-mix(in srgb, var(--cream) 60%, var(--sage) 40%) 100%
+    );
+}
+
+/* --- BREATH --- cream-sage edge → sage core → sage-rose edge
+   Radials concentrated in the middle 50% to keep edges seamless. */
+.breath::before {
+  background:
+    radial-gradient(45% 35% at 30% 50%, color-mix(in srgb, var(--sage) 40%, transparent), transparent 75%),
+    radial-gradient(45% 35% at 75% 55%, color-mix(in srgb, var(--rose) 24%, transparent), transparent 75%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--cream) 60%, var(--sage) 40%) 0%,
+      color-mix(in srgb, var(--sage)  85%, var(--cream) 15%) 35%,
+      color-mix(in srgb, var(--sage)  92%, var(--midnight-navy) 8%) 60%,
+      color-mix(in srgb, var(--sage)  55%, var(--rose) 45%) 100%
+    );
+}
+
+/* Breath needs cream text on the sage backdrop */
+.breath .eyebrow,
+.breath-sub,
+.breath-foot {
+  color: color-mix(in srgb, var(--cream) 86%, transparent) !important;
+}
+.breath-title { color: var(--cream) !important; }
+
+/* --- VOICES --- sage-rose edge → rose core → rose-cream edge
+   Radials kept inside the middle 60% so the linear owns top/bottom. */
+.voices::before {
+  background:
+    radial-gradient(50% 40% at 50% 45%, color-mix(in srgb, var(--rose) 38%, transparent), transparent 75%),
+    radial-gradient(40% 30% at 50% 65%, color-mix(in srgb, var(--oat) 18%, transparent), transparent 75%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--sage) 55%, var(--rose) 45%) 0%,
+      color-mix(in srgb, var(--rose) 80%, var(--cream) 20%) 30%,
+      color-mix(in srgb, var(--rose) 90%, var(--midnight-navy) 10%) 60%,
+      color-mix(in srgb, var(--rose) 50%, var(--cream) 50%) 100%
+    );
+}
+.voices .eyebrow,
+.voices figcaption,
+.voices blockquote { color: var(--cream) !important; }
+.voices-title { color: var(--cream) !important; }
+
+/* --- CLOSING --- rose-cream edge → cream
+   Radial pulled inward; bottom owned by clean cream linear. */
+.closing::before {
+  background:
+    radial-gradient(50% 35% at 50% 45%, color-mix(in srgb, var(--rose) 22%, transparent), transparent 75%),
+    radial-gradient(40% 30% at 50% 70%, color-mix(in srgb, var(--oat) 16%, transparent), transparent 75%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--rose) 50%, var(--cream) 50%) 0%,
+      color-mix(in srgb, var(--cream) 80%, var(--rose) 20%) 35%,
+      var(--cream) 70%,
+      var(--cream) 100%
+    );
+}
+
+/* ============================================================
+   4. ROOM TO BREATHE — slightly bigger sections
+   ============================================================ */
+.lineup {
+  padding-top: clamp(3.5rem, 6vw, 5rem) !important;
+  padding-bottom: clamp(3.5rem, 6vw, 5rem) !important;
+}
+.breath {
+  min-height: 0 !important;
+  padding-top: clamp(5rem, 9vw, 8rem) !important;
+  padding-bottom: clamp(5rem, 9vw, 8rem) !important;
+}
+.voices {
+  padding-top: clamp(5rem, 9vw, 8rem) !important;
+  padding-bottom: clamp(5rem, 9vw, 8rem) !important;
+}
+.closing {
+  padding-top: clamp(5rem, 9vw, 8rem) !important;
+  padding-bottom: clamp(5rem, 9vw, 8rem) !important;
+}
+
+/* Lineup head */
+.lineup-head {
+  margin-bottom: clamp(1.6rem, 3vw, 2.4rem) !important;
+}
+.lineup-head h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem) !important;
+  margin: 0.5rem 0 !important;
+}
+
+/* Breath */
+.breath-title {
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  max-width: 32ch !important;
+  margin: 0.6rem auto 1.2rem !important;
+  line-height: 1.15 !important;
+}
+.breath-sub {
+  max-width: 56ch !important;
+  margin-bottom: 2.5rem !important;
+  font-size: 1rem !important;
+}
+.breath-circle-wrap {
+  width: clamp(220px, 28vw, 320px) !important;
+}
+.breath-foot {
+  margin-top: 2.4rem !important;
+  font-size: 0.92rem !important;
+}
+
+/* Voices */
+.voices-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem) !important;
+  max-width: 36ch !important;
+  margin: 1rem auto 3rem !important;
+}
+.voice {
+  padding: 1.8rem 2rem !important;
+}
+.voice blockquote {
+  font-size: 1.08rem !important;
+  margin-bottom: 1.2rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Closing */
+.closing-title {
+  font-size: clamp(2.2rem, 5vw, 4rem) !important;
+  margin-bottom: 1.4rem !important;
+}
+.closing-sub {
+  margin-bottom: 2.4rem !important;
+  font-size: 1.05rem !important;
+}
+
+/* ============================================================
+   5. LINEUP — raw hoodie images (no card frames)
+   ============================================================ */
+.lineup .choose-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: end;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+/* Always-visible (immune to reveal-on-scroll's hidden initial state) */
+.lineup .choose-card.reveal-on-scroll {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: transform 0.6s var(--ease-calm) !important;
+}
+
+.lineup .choose-card.product-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+.lineup .choose-card.product-card:hover {
+  transform: translateY(-4px);
+}
+.lineup .choose-card .product-card-link {
+  display: block !important;
+  background: transparent !important;
+  height: auto !important;
+  color: inherit;
+}
+.lineup .choose-card .product-card-image {
+  position: relative;
+  aspect-ratio: 1/1 !important;
+  background: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.lineup .choose-card .product-card-image::before,
+.lineup .choose-card .product-card-image::after {
+  content: none !important;
+}
+.lineup .choose-card .product-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 30px 50px rgba(26, 26, 26, 0.18));
+  transition: transform 1s var(--ease-calm), filter 1s var(--ease-calm);
+}
+.lineup .choose-card:hover .product-card-image img {
+  transform: scale(1.03);
+  filter: drop-shadow(0 36px 60px rgba(26, 26, 26, 0.26));
+}
+.lineup .choose-card .product-card-badge {
+  position: absolute; top: 0.6rem; left: 0.6rem;
+  font-size: 0.58rem; letter-spacing: 0.20em; text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--midnight-navy);
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  z-index: 2;
+}
+.lineup .choose-card .product-card-body {
+  background: transparent !important;
+  padding: 1.2rem 0 0 !important;
+  display: flex !important;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 0 0 auto !important;
+  text-align: center;
+}
+.lineup .choose-card .product-card-body h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem) !important;
+  color: var(--midnight-navy);
+  margin: 0;
+}
+.lineup .choose-card .product-card-body > div > p {
+  color: color-mix(in srgb, var(--midnight-navy) 65%, transparent);
+  font-size: 0.88rem !important;
+  line-height: 1.5 !important;
+  margin: 0.3rem 0 0;
+}
+.lineup .choose-card .product-card-foot {
+  border-top: 1px solid color-mix(in srgb, var(--midnight-navy) 14%, transparent);
+  padding-top: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.lineup .choose-card .product-card-price {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--midnight-navy);
+}
+.lineup .choose-card .product-card-cta {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--midnight-navy);
+  font-weight: 500;
+}
+
+/* Roadmap row — compact */
+.lineup .roadmap {
+  margin-top: clamp(2rem, 4vw, 3rem) !important;
+  padding-top: clamp(1.4rem, 2.5vw, 2rem) !important;
+}
+.lineup .roadmap-label {
+  font-size: 0.68rem !important;
+  margin-bottom: 1rem !important;
+}
+.lineup .roadmap-row {
+  gap: clamp(1rem, 2vw, 2rem) !important;
+}
+.lineup .roadmap-swatch i {
+  width: 48px !important;
+  height: 48px !important;
+}
+.lineup .roadmap-swatch span {
+  font-size: 0.78rem !important;
+}
+.lineup .roadmap-swatch em {
+  font-size: 0.6rem !important;
+}
+
+/* ============================================================
+   6. MOBILE FIXES
+   ============================================================ */
+@media (max-width: 900px) {
+  .philosophy, .science, .lineup, .product-teaser,
+  .voices, .journal-teaser, .closing, .breath {
+    content-visibility: visible;
+    contain-intrinsic-size: auto;
+  }
+  /* Solid base bg fallback (matches the gradient start) */
+  .hero    { background-color: var(--cream); }
+  .lineup  { background-color: var(--cream); }
+  .breath  { background-color: color-mix(in srgb, var(--sage) 75%, var(--cream)); }
+  .voices  { background-color: color-mix(in srgb, var(--rose) 75%, var(--cream)); }
+  .closing { background-color: var(--cream); }
+
+  /* Less GPU pressure (kept) */
+  .hero-particles { animation-duration: 240s !important; opacity: 0.35 !important; }
+  .hero-mark .ring-pulse { animation-duration: 14s !important; }
+
+  /* Section paddings on mobile */
+  .lineup, .breath, .voices, .closing {
+    padding-top: clamp(2.5rem, 6vw, 4rem) !important;
+    padding-bottom: clamp(2.5rem, 6vw, 4rem) !important;
+  }
+
+  /* Headlines */
+  .lineup-head h2,
+  .breath-title,
+  .voices-title,
+  .closing-title {
+    font-size: clamp(1.5rem, 6vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+    max-width: 24ch !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .lineup .choose-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  .lineup .choose-card .product-card-image { max-width: 100%; }
+  .lineup .choose-card .product-card-body h3 { font-size: 0.9rem !important; }
+  .lineup .choose-card .product-card-body > div > p { display: none; }
+  .lineup .choose-card .product-card-foot { padding-top: 0.5rem; }
+  .lineup .choose-card .product-card-price { font-size: 0.9rem !important; }
+  .lineup .choose-card .product-card-cta { font-size: 0.58rem !important; }
+
+  .lineup .roadmap-row {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.6rem !important;
+  }
+  .lineup .roadmap-swatch i { width: 38px !important; height: 38px !important; }
+  .lineup .roadmap-swatch span { font-size: 0.62rem !important; }
+  .lineup .roadmap-swatch em { font-size: 0.5rem !important; }
+
+  .breath-circle-wrap { width: clamp(180px, 50vw, 240px) !important; }
+  .breath-sub, .breath-foot { max-width: 34ch !important; font-size: 0.88rem !important; }
+
+  .voices-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .voice { padding: 1.4rem 1.6rem !important; }
+}

@@ -1,0 +1,220 @@
+/* ============================================================
+   THE OOVI — Portal section
+   ------------------------------------------------------------
+   Hero-style two-column layout (text left, breathing mark right).
+   Scroll-driven: the mark zooms slowly while the text slides off
+   to the left — "the camera moves toward the right and enters
+   through the circles". Background stays cream throughout —
+   no dark layer, no fade.
+
+   The breathing animation on the rings is purely CSS (matches the
+   existing hero feel). GSAP only animates a wrapper (.portal-mark)
+   so the breathing keyframes inside continue running independently.
+   ============================================================ */
+
+#portal {
+  position: relative;
+  height: 400vh;
+  background: #F5F3EF; /* cream */
+  width: 100%;
+  z-index: 1;
+}
+
+/* The element ScrollTrigger pins */
+.portal-pin {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #F5F3EF;
+  display: flex;
+  align-items: center;
+}
+
+/* Two-column hero-style grid */
+.portal-grid {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(2.5rem, 6vw, 7rem);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ----- LEFT COLUMN: copy ----- */
+.portal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  color: #1A1A1A;
+  will-change: transform, opacity;
+}
+.portal-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.65);
+  margin-bottom: 2rem;
+}
+.portal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.6rem, 7vw, 5.8rem);
+  line-height: 1.0;
+  letter-spacing: -0.022em;
+  margin-bottom: 2.2rem;
+  max-width: 14ch;
+  color: #2C353F;
+}
+.portal-title span { display: block; }
+.portal-title em { font-style: italic; }
+.portal-sub {
+  max-width: 44ch;
+  font-size: clamp(1.02rem, 1.25vw, 1.18rem);
+  color: rgba(26, 26, 26, 0.78);
+  line-height: 1.75;
+  margin-bottom: 2.6rem;
+}
+.portal-cta {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  margin-bottom: 2.4rem;
+}
+.portal-cta .btn { pointer-events: auto; }
+.portal-meta {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.55);
+}
+.portal-meta i {
+  display: inline-block; width: 3px; height: 3px;
+  background: currentColor; border-radius: 50%; opacity: 0.5;
+}
+
+/* ----- RIGHT COLUMN: breathing mark ----- */
+.portal-visual {
+  display: grid;
+  place-items: center;
+  color: #2C353F;
+  position: relative;
+  z-index: 10;
+  will-change: transform;
+  /* GSAP scale anchors here, while CSS breathing animations
+     run on the children (.ring-outer, .ring-inner, .ring-pulse).
+     Origin is the center of the circles for the through-the-portal feel. */
+  transform-origin: 50% 50%;
+}
+.portal-mark {
+  width: clamp(220px, 28vw, 380px);
+  aspect-ratio: 1;
+  animation: portal-float 9s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  filter: drop-shadow(0 30px 60px rgba(44, 53, 63, 0.08));
+}
+.portal-mark svg {
+  width: 100%; height: 100%;
+  overflow: visible;
+  display: block;
+}
+.portal-mark .ring-outer,
+.portal-mark .ring-inner,
+.portal-mark .ring-pulse {
+  transform-origin: 100px 100px;
+  /* SVG vector ensures crisp lines at any zoom */
+  vector-effect: non-scaling-stroke;
+}
+.portal-mark .ring-outer { animation: portal-breath-outer 8s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+.portal-mark .ring-inner { animation: portal-breath-inner 8s cubic-bezier(0.22, 1, 0.36, 1) infinite; }
+.portal-mark .ring-pulse { animation: portal-pulse 8s cubic-bezier(0.22, 1, 0.36, 1) infinite; opacity: 0; }
+
+@keyframes portal-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -10px, 0); }
+}
+@keyframes portal-breath-outer {
+  0%, 100% { transform: scale(0.96); opacity: 0.85; }
+  50%      { transform: scale(1.04); opacity: 1; }
+}
+@keyframes portal-breath-inner {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50%      { transform: scale(1.12); opacity: 0.95; }
+}
+@keyframes portal-pulse {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* ----- Hint at bottom ----- */
+.portal-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 3vh;
+  transform: translateX(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(44, 53, 63, 0.45);
+  z-index: 5;
+  pointer-events: none;
+  will-change: opacity;
+}
+.portal-hint::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 28px;
+  margin: 0.8rem auto 0;
+  background: rgba(44, 53, 63, 0.3);
+}
+
+/* ----- Mobile: stack the columns, mark above text ----- */
+@media (max-width: 900px) {
+  .portal-pin {
+    padding-top: clamp(5rem, 12vw, 8rem);
+    padding-bottom: clamp(2rem, 4vw, 4rem);
+    align-items: flex-start;
+  }
+  .portal-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  .portal-content {
+    align-items: center;
+    text-align: center;
+    order: 2;
+  }
+  .portal-visual {
+    order: 1;
+  }
+  .portal-mark {
+    width: clamp(180px, 50vw, 260px);
+  }
+  .portal-title { max-width: 100%; }
+  .portal-cta { justify-content: center; }
+  .portal-meta { justify-content: center; }
+}
+
+/* ----- Reduced motion: collapse to a single static panel ----- */
+@media (prefers-reduced-motion: reduce) {
+  #portal { height: auto; }
+  .portal-pin {
+    position: relative;
+    height: auto;
+    min-height: 90vh;
+  }
+  .portal-mark,
+  .portal-mark .ring-outer,
+  .portal-mark .ring-inner,
+  .portal-mark .ring-pulse {
+    animation: none;
+  }
+}

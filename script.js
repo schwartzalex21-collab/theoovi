@@ -62,7 +62,7 @@
    * ---------------------------------------------------------- */
   let lenis;
   const isHeadless = /HeadlessChrome|Puppeteer|Playwright/i.test(navigator.userAgent);
-  if (window.Lenis && !prefersReducedMotion && !isHeadless) {
+  if (window.Lenis && !prefersReducedMotion && !isHeadless && !document.body.classList.contains('page-produs')) {
     lenis = new Lenis({
       duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -237,6 +237,14 @@
         if (c.startsWith('bg-')) document.body.classList.remove(c);
       });
       document.body.classList.add('bg-' + bg);
+      
+      // Toggle dark theme on nav
+      const nav = document.querySelector('.nav');
+      const floatingHeader = document.querySelector('.floating-header');
+      const isDark = (bg === 'navy');
+      
+      if (nav) nav.classList.toggle('nav-is-dark', isDark);
+      if (floatingHeader) floatingHeader.classList.toggle('nav-is-dark', isDark);
     });
   }, { threshold: 0.4 });
   document.querySelectorAll('section[data-bg]').forEach((s) => bgIO.observe(s));
@@ -301,6 +309,18 @@
         scrub: 1.4,
       },
     });
+
+
+    // Subtle fade for science viz
+    gsap.fromTo('.science-viz',
+      { opacity: 0, scale: 0.92 },
+      {
+        opacity: 1, scale: 1,
+        duration: 2,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: '.science', start: 'top 60%' },
+      }
+    );
 
     // Subtle fade for science viz
     gsap.fromTo('.science-viz',
