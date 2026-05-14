@@ -2251,17 +2251,20 @@ body.with-cinemagraph .hero-mark { z-index: 3; mix-blend-mode: difference; opaci
 }
 .modal.is-open { opacity: 1; pointer-events: auto; }
 .modal-card {
-  background: var(--cream);
-  color: var(--ink);
+  background: rgba(26, 28, 30, 0.85); /* Darker glass for better contrast */
+  color: #fff;
   width: 100%;
-  max-width: 720px;
-  border-radius: 12px;
-  padding: clamp(2rem, 4vw, 3rem);
+  max-width: 600px; /* Narrower for cleaner look */
+  border-radius: 16px;
+  padding: 2rem;
   position: relative;
-  box-shadow: 0 50px 100px -30px rgba(26,26,26,0.4);
+  box-shadow: 0 50px 100px -30px rgba(0,0,0,0.5);
   transform: translateY(20px);
   transition: transform 0.7s var(--ease-calm);
   margin: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 .modal.is-open .modal-card { transform: none; }
 .modal-close {
@@ -2293,20 +2296,20 @@ body.with-cinemagraph .hero-mark { z-index: 3; mix-blend-mode: difference; opaci
 .size-table {
   width: 100%; border-collapse: collapse;
   font-size: 0.92rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .size-table th {
   text-align: left;
   padding: 0.9rem 0.6rem;
   font-weight: 500; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: color-mix(in srgb, var(--ink) 60%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .size-table td {
   padding: 0.95rem 0.6rem;
-  font-family: var(--serif); font-size: 1.05rem;
-  color: var(--midnight-navy);
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  font-size: 1rem;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .size-table tr:last-child td { border-bottom: none; }
 
@@ -3528,7 +3531,8 @@ body.bg-sage .glass-nav a:hover {
     transform: none;
     width: 100%;
     height: 60vh;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    touch-action: none; /* Previne scroll-ul paginii când dai swipe pe carusel */
   }
   
   .hero-main-image img {
@@ -3538,11 +3542,12 @@ body.bg-sage .glass-nav a:hover {
   }
   
   .hero-thumbnails {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
     flex-direction: row;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -3551,6 +3556,8 @@ body.bg-sage .glass-nav a:hover {
     z-index: 10;
     gap: 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    width: fit-content;
+    margin: 0 auto 1.5rem auto; /* Centrat și cu spațiu sub el */
   }
   
   .thumb-btn {
