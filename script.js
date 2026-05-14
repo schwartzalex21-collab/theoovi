@@ -20,6 +20,8 @@
   window.addEventListener('load', () => {
     setTimeout(hideLoader, prefersReducedMotion ? 100 : 1200);
   });
+  // Fail-safe: hide loader after 3 seconds anyway
+  setTimeout(hideLoader, 3000);
 
   /* ------------------------------------------------------------
    * 2. Soft cursor — lerped position, blend-mode
@@ -338,4 +340,58 @@
       else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  /* ------------------------------------------------------------
+   * 14. Floating header injection & menu toggle
+   * ---------------------------------------------------------- */
+  const initFloatingHeader = () => {
+    let header = document.querySelector('.floating-header');
+    if (!header) {
+      header = document.createElement('div');
+      header.className = 'floating-header';
+      header.innerHTML = `
+        <div class="pill-nav">
+          <a href="index.html" class="pill-logo">The Oovi</a>
+          <button class="pill-toggle" id="menuToggle">+</button>
+        </div>
+        <div class="glass-menu" id="glassMenu">
+          <nav class="glass-nav">
+            <a href="produs.html">Produs</a>
+            <a href="index.html#stiinta">Știință</a>
+            <a href="practici.html">Practici</a>
+            <a href="blog.html">Jurnal</a>
+            <a href="despre.html">Despre</a>
+            <a href="cos.html">Coș</a>
+          </nav>
+        </div>
+      `;
+      
+      const inject = () => {
+        if (document.body) {
+          document.body.prepend(header);
+          bindEvents();
+        }
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', inject);
+      } else {
+        inject();
+      }
+    } else {
+      bindEvents();
+    }
+
+    function bindEvents() {
+      const menuToggle = document.getElementById('menuToggle');
+      const glassMenu = document.getElementById('glassMenu');
+      if (menuToggle && glassMenu) {
+        menuToggle.addEventListener('click', () => {
+          glassMenu.classList.toggle('is-open');
+          menuToggle.textContent = glassMenu.classList.contains('is-open') ? '−' : '+';
+        });
+      }
+    }
+  };
+  initFloatingHeader();
 })();

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comandă — The Oovi</title>
+  <meta name="description" content="Finalizează pre-comanda. Adresă, livrare, plată — în trei pași." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/oovi-logo.svg" />
+</head>
+<body class="page-comanda">
+
+  <div class="prelaunch" role="status">
+    <i aria-hidden="true"></i>
+    <span><strong>Pre-comandă deschisă</strong> <span class="prelaunch-detail">· Livrare începând cu 1 octombrie · 299,99 lei <s>450</s></span></span>
+  </div>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="index.html" class="nav-mark" aria-label="The Oovi — acasă">
+      <svg viewBox="0 0 100 100" width="26" height="26" aria-hidden="true">
+        <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="6" />
+        <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2.5" />
+      </svg>
+      <span class="nav-word">THE&nbsp;OOVI</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="produs.html">Produs</a>
+      <a href="practici.html">Practici</a>
+      <a href="blog.html">Jurnal</a>
+      <a href="despre.html">Despre</a>
+    </nav>
+    <div class="nav-end">
+      <a href="cos.html" class="nav-cart" aria-label="Coșul tău">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="nav-cart-badge" data-cart-count>0</span>
+      </a>
+      <a href="produs.html" class="nav-cta" data-magnetic>Pre-comandă</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="checkout-hero">
+      <p class="eyebrow reveal-on-scroll">Comandă</p>
+      <h1 class="reveal-words">Finalizează pre-comanda.</h1>
+      <p class="reveal-on-scroll">Trei pași. Plătești azi, primești pe 1 octombrie.</p>
+    </section>
+
+    <form class="checkout-layout" id="checkoutForm" novalidate>
+      <div class="checkout-form">
+
+        <!-- STEP 1: CONTACT -->
+        <section class="checkout-step">
+          <div class="checkout-step-head">
+            <span class="checkout-step-num">01</span>
+            <h2>Date de contact</h2>
+          </div>
+          <small class="checkout-step-hint">Trimitem confirmarea de comandă pe email și actualizări la livrare prin SMS.</small>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="email">Email <span class="req">*</span></label>
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="numele.tau@email.ro" />
+              <span class="error">Introdu o adresă de email validă.</span>
+            </div>
+            <div class="form-field">
+              <label for="phone">Telefon <span class="req">*</span></label>
+              <input id="phone" name="phone" type="tel" required autocomplete="tel" placeholder="07xx xxx xxx" />
+              <span class="error">Introdu un număr de telefon valid (07x...).</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 2: ADDRESS -->
+        <section class="checkout-step">
+          <div class="checkout-step-head">
+            <span class="checkout-step-num">02</span>
+            <h2>Adresă de livrare</h2>
+          </div>
+          <small class="checkout-step-hint">Aici ajunge pachetul. Curierul te sună înainte cu 30 de minute.</small>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="firstName">Prenume <span class="req">*</span></label>
+              <input id="firstName" name="firstName" required autocomplete="given-name" placeholder="Ana" />
+              <span class="error">Câmp obligatoriu.</span>
+            </div>
+            <div class="form-field">
+              <label for="lastName">Nume <span class="req">*</span></label>
+              <input id="lastName" name="lastName" required autocomplete="family-name" placeholder="Popescu" />
+              <span class="error">Câmp obligatoriu.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="county">Județ <span class="req">*</span></label>
+              <select id="county" name="county" required autocomplete="address-level1">
+                <option value="">Alege județul</option>
+                <option>Alba</option><option>Arad</option><option>Argeș</option><option>Bacău</option>
+                <option>Bihor</option><option>Bistrița-Năsăud</option><option>Botoșani</option><option>Brașov</option>
+                <option>Brăila</option><option>București</option><option>Buzău</option><option>Caraș-Severin</option>
+                <option>Călărași</option><option>Cluj</option><option>Constanța</option><option>Covasna</option>
+                <option>Dâmbovița</option><option>Dolj</option><option>Galați</option><option>Giurgiu</option>
+                <option>Gorj</option><option>Harghita</option><option>Hunedoara</option><option>Ialomița</option>
+                <option>Iași</option><option>Ilfov</option><option>Maramureș</option><option>Mehedinți</option>
+                <option>Mureș</option><option>Neamț</option><option>Olt</option><option>Prahova</option>
+                <option>Sălaj</option><option>Satu Mare</option><option>Sibiu</option><option>Suceava</option>
+                <option>Teleorman</option><option>Timiș</option><option>Tulcea</option><option>Vâlcea</option>
+                <option>Vaslui</option><option>Vrancea</option>
+              </select>
+              <span class="error">Alege un județ.</span>
+            </div>
+            <div class="form-field">
+              <label for="city">Localitate <span class="req">*</span></label>
+              <input id="city" name="city" required autocomplete="address-level2" placeholder="București / Cluj-Napoca / sat etc." />
+              <span class="error">Câmp obligatoriu.</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="address">Strada, număr, bloc, scara, ap. <span class="req">*</span></label>
+              <input id="address" name="address" required autocomplete="street-address" placeholder="Str. Exemplu nr. 12, bl. A2, sc. 1, ap. 14" />
+              <span class="error">Câmp obligatoriu.</span>
+            </div>
+            <div class="form-field">
+              <label for="zip">Cod poștal <span class="req">*</span></label>
+              <input id="zip" name="zip" required autocomplete="postal-code" inputmode="numeric" placeholder="060123" pattern="\d{6}" />
+              <span class="error">6 cifre.</span>
+            </div>
+          </div>
+
+          <div class="form-row full">
+            <div class="form-field">
+              <label for="notes">Observații (opțional)</label>
+              <textarea id="notes" name="notes" rows="2" placeholder="Etajul 3, ușa pe stânga. Sună la interfon, nu la sonerie."></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 3: DELIVERY -->
+        <section class="checkout-step">
+          <div class="checkout-step-head">
+            <span class="checkout-step-num">03</span>
+            <h2>Metodă de livrare</h2>
+          </div>
+          <small class="checkout-step-hint">Toate pre-comenzile pleacă în săptămâna lansării (1 oct). Livrarea e gratuită.</small>
+
+          <div class="form-choices">
+            <label class="choice">
+              <input type="radio" name="delivery" value="curier" checked />
+              <div class="choice-text">
+                <strong>Curier la domiciliu</strong>
+                <small>Cargus / FAN, 1–3 zile lucrătoare după 1 octombrie. Te sună înainte de livrare.</small>
+              </div>
+              <span class="choice-price">Gratis</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="delivery" value="easybox" />
+              <div class="choice-text">
+                <strong>Easybox / Locker Sameday</strong>
+                <small>1–3 zile lucrătoare după 1 octombrie. Ridici când ai timp, primești cod pe SMS.</small>
+              </div>
+              <span class="choice-price">Gratis</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- STEP 4: PAYMENT -->
+        <section class="checkout-step">
+          <div class="checkout-step-head">
+            <span class="checkout-step-num">04</span>
+            <h2>Metodă de plată</h2>
+          </div>
+          <small class="checkout-step-hint">Plata e procesată securizat. Datele cardului nu trec prin serverele noastre.</small>
+
+          <div class="form-choices">
+            <label class="choice">
+              <input type="radio" name="payment" value="card" checked />
+              <div class="choice-text">
+                <strong>Card online</strong>
+                <small>Visa, Mastercard, Maestro. Vei fi redirecționat după plasarea comenzii.</small>
+              </div>
+            </label>
+            <label class="choice">
+              <input type="radio" name="payment" value="transfer" />
+              <div class="choice-text">
+                <strong>Transfer bancar</strong>
+                <small>Primești datele de cont după plasarea comenzii. Plata în 3 zile lucrătoare.</small>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <!-- STEP 5: TERMS -->
+        <section class="checkout-step">
+          <div class="form-choices">
+            <label class="choice">
+              <input type="checkbox" id="terms" name="terms" required />
+              <div class="choice-text">
+                <strong>Am citit și sunt de acord cu Termenii și Politica de Confidențialitate.</strong>
+                <small>Inclusiv condițiile de pre-comandă și politica de retur de 30 de zile după livrare.</small>
+              </div>
+            </label>
+            <label class="choice">
+              <input type="checkbox" id="newsletter" name="newsletter" />
+              <div class="choice-text">
+                <strong>Vreau newsletter-ul Oovi (opțional)</strong>
+                <small>Un email pe lună, când avem ceva relevant de spus. Niciodată mai des. Te dezabonezi cu un click.</small>
+              </div>
+            </label>
+          </div>
+
+          <div class="checkout-actions">
+            <button type="submit" class="btn btn-solid" id="placeOrderBtn">Plasează pre-comanda</button>
+            <p class="checkout-secure">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Plată criptată end-to-end · Datele tale rămân ale tale</span>
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <aside class="cos-summary" id="checkoutSummary">
+        <!-- Populated by JS -->
+      </aside>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-mark">
+          <svg viewBox="0 0 100 100" width="30" height="30" aria-hidden="true">
+            <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="6" />
+            <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2.5" />
+          </svg>
+          <span>THE OOVI</span>
+        </div>
+        <p class="footer-tag">Gently Heavy. Croit în România. Purtat oriunde.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Magazin</h4>
+        <a href="produs.html">Hanorac Antracit</a>
+        <a href="produs.html">Hanorac Rose</a>
+      </div>
+      <div class="footer-col">
+        <h4>Citește</h4>
+        <a href="blog.html">Jurnal</a>
+        <a href="practici.html">Practici</a>
+        <a href="despre.html">Despre</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@theoovi.com">hello@theoovi.com</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The Oovi</span>
+      <span>Respiră · Derulează · Repetă</span>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    (() => {
+      const summaryEl = document.getElementById('checkoutSummary');
+      const form = document.getElementById('checkoutForm');
+
+      /* If cart is empty, redirect to cart */
+      if (!OoviCart.read().length) {
+        window.location.replace('cos.html');
+        return;
+      }
+
+      const colorHex = { antracit: '#3C3F41', rose: '#B78E8D' };
+
+      /* Render order summary */
+      const renderSummary = () => {
+        const items = OoviCart.read();
+        const sub = OoviCart.subtotal();
+        const count = items.reduce((s, i) => s + i.qty, 0);
+        const itemsHtml = items.map(i => `
+          <div class="cos-summary-row">
+            <span>${i.qty} × ${OoviCatalog.colors[i.color]?.name || i.color} · ${i.size}</span>
+            <strong>${OoviCart.formatPrice(i.price * i.qty)}</strong>
+          </div>
+        `).join('');
+        summaryEl.innerHTML = `
+          <h3>Sumar comandă</h3>
+          ${itemsHtml}
+          <div class="cos-summary-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--cream) 18%, transparent);">
+            <span>Subtotal</span>
+            <strong>${OoviCart.formatPrice(sub)}</strong>
+          </div>
+          <div class="cos-summary-row">
+            <span>Livrare</span>
+            <strong>Gratis</strong>
+          </div>
+          <div class="cos-summary-total">
+            <span>Total</span>
+            <strong>${OoviCart.formatPrice(sub)}</strong>
+          </div>
+          <div class="cos-summary-perks">
+            <p>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Primești pachetul pe 1 octombrie 2026.
+            </p>
+          </div>
+        `;
+      };
+      renderSummary();
+      window.addEventListener('oovi:cart-changed', renderSummary);
+
+      /* Validation */
+      const isEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+      const isPhone = (v) => /^(\+?40|0)7\d{8}$/.test(v.replace(/\s/g, ''));
+
+      const validate = () => {
+        let allValid = true;
+        const fields = form.querySelectorAll('.form-field');
+        fields.forEach(f => f.classList.remove('is-invalid'));
+
+        const get = (id) => form.querySelector(`#${id}`);
+        const fail = (id) => {
+          get(id)?.closest('.form-field')?.classList.add('is-invalid');
+          allValid = false;
+        };
+
+        if (!isEmail(get('email').value)) fail('email');
+        if (!isPhone(get('phone').value)) fail('phone');
+        if (!get('firstName').value.trim()) fail('firstName');
+        if (!get('lastName').value.trim()) fail('lastName');
+        if (!get('county').value) fail('county');
+        if (!get('city').value.trim()) fail('city');
+        if (!get('address').value.trim()) fail('address');
+        if (!/^\d{6}$/.test(get('zip').value.trim())) fail('zip');
+        if (!get('terms').checked) {
+          get('terms').closest('.choice').style.borderColor = 'var(--rose)';
+          allValid = false;
+        } else {
+          get('terms').closest('.choice').style.borderColor = '';
+        }
+        return allValid;
+      };
+
+      /* Submit */
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!validate()) {
+          // Scroll to first invalid
+          const first = form.querySelector('.is-invalid input, .is-invalid select');
+          if (first) first.focus({ preventScroll: false });
+          return;
+        }
+        const btn = document.getElementById('placeOrderBtn');
+        btn.disabled = true;
+        const original = btn.textContent;
+        btn.textContent = 'Procesăm comanda...';
+
+        // Build order object for confirmation page
+        const order = {
+          id: OoviCart.generateOrderId(),
+          items: OoviCart.read(),
+          total: OoviCart.subtotal(),
+          email: form.email.value.trim(),
+          phone: form.phone.value.trim(),
+          name: `${form.firstName.value.trim()} ${form.lastName.value.trim()}`,
+          address: `${form.address.value.trim()}, ${form.city.value.trim()}, ${form.county.value}, ${form.zip.value.trim()}`,
+          delivery: form.querySelector('input[name="delivery"]:checked').value,
+          payment: form.querySelector('input[name="payment"]:checked').value,
+          notes: form.notes.value.trim(),
+          createdAt: new Date().toISOString(),
+        };
+
+        // Store in sessionStorage for confirmation page
+        sessionStorage.setItem('oovi_last_order', JSON.stringify(order));
+        // Clear cart
+        OoviCart.clear();
+        // Simulate processing time
+        setTimeout(() => {
+          window.location.href = 'multumim.html';
+        }, 1000);
+      });
+
+      // Real-time clear errors on input
+      form.querySelectorAll('input, select, textarea').forEach(el => {
+        el.addEventListener('input', () => el.closest('.form-field')?.classList.remove('is-invalid'));
+      });
+    })();
+  </script>
+</body>
+</html>

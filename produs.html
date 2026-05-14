@@ -15,6 +15,12 @@
 </head>
 <body class="page-produs">
 
+  <!-- Pre-launch banner -->
+  <div class="prelaunch" role="status">
+    <i aria-hidden="true"></i>
+    <span><strong>Pre-comandă deschisă</strong> <span class="prelaunch-detail">· Livrare începând cu 1 octombrie · 299,99 lei <s>450</s></span></span>
+  </div>
+
   <div class="cursor" aria-hidden="true"></div>
   <div class="cursor-dot" aria-hidden="true"></div>
 
@@ -25,130 +31,112 @@
     </svg>
   </div>
 
-  <header class="nav">
-    <a href="index.html" class="nav-mark" aria-label="The Oovi — acasă">
-      <svg viewBox="0 0 100 100" width="26" height="26" aria-hidden="true">
-        <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="6" />
-        <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2.5" />
-      </svg>
-      <span class="nav-word">THE&nbsp;OOVI</span>
-    </a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="produs.html">Produs</a>
-      <a href="index.html#stiinta">Știință</a>
-      <a href="index.html#respira">Respiră</a>
-      <a href="blog.html">Jurnal</a>
-    </nav>
-    <a href="#cumpara" class="nav-cta" data-magnetic>Cumpără acum</a>
-  </header>
+  <div class="floating-header">
+    <div class="pill-nav">
+      <a href="index.html" class="pill-logo">The Oovi</a>
+      <button class="pill-toggle" id="menuToggle">+</button>
+    </div>
+    
+    <div class="glass-menu" id="glassMenu">
+      <nav class="glass-nav">
+        <a href="produs.html">Produs</a>
+        <a href="index.html#stiinta">Știință</a>
+        <a href="practici.html">Practici</a>
+        <a href="blog.html">Jurnal</a>
+        <a href="despre.html">Despre</a>
+        <a href="cos.html">Coș</a>
+      </nav>
+    </div>
+  </div>
 
   <main id="top">
 
     <!-- ============== PRODUS HERO ============== -->
     <section class="produs-hero" id="cumpara">
-      <div class="produs-grid">
+      <!-- Main Centered Image -->
+      <div class="hero-main-image">
+        <img src="assets/hoodie_front.png" alt="Hanorac Fata" id="mainProdusImage">
+      </div>
 
-        <!-- GALLERY -->
-        <div class="produs-gallery">
-          <div class="produs-cover no-image" id="produsCover" style="--c:#3C3F41">
-            <div class="cover-mark" aria-hidden="true">
-              <svg viewBox="0 0 200 200" width="180" height="180">
-                <circle cx="100" cy="100" r="72" fill="none" stroke="currentColor" stroke-width="6" />
-                <circle cx="100" cy="100" r="44" fill="none" stroke="currentColor" stroke-width="2.5" />
-              </svg>
+      <!-- Thumbnails (Bottom Left) -->
+      <div class="hero-thumbnails">
+        <button class="thumb-btn is-active" onclick="document.getElementById('mainProdusImage').src='assets/hoodie_front.png'; document.querySelectorAll('.thumb-btn').forEach(b=>b.classList.remove('is-active')); this.classList.add('is-active');">
+          <img src="assets/hoodie_front.png" alt="Thumb 1">
+        </button>
+        <button class="thumb-btn" onclick="document.getElementById('mainProdusImage').src='assets/hoodie_back.png'; document.querySelectorAll('.thumb-btn').forEach(b=>b.classList.remove('is-active')); this.classList.add('is-active');">
+          <img src="assets/hoodie_back.png" alt="Thumb 2">
+        </button>
+        <button class="thumb-btn" onclick="document.getElementById('mainProdusImage').src='assets/hoodie_sleeve.png'; document.querySelectorAll('.thumb-btn').forEach(b=>b.classList.remove('is-active')); this.classList.add('is-active');">
+          <img src="assets/hoodie_sleeve.png" alt="Thumb 3">
+        </button>
+      </div>
+
+      <!-- INFO -->
+      <div class="produs-info">
+        <p class="produs-breadcrumb">
+          <a href="index.html">Acasă</a> &nbsp;·&nbsp;
+          <a href="index.html#culori">Culori</a> &nbsp;·&nbsp;
+          <span id="breadcrumbColor">Antracit</span>
+        </p>
+
+        <h1 class="produs-title">Hanorac cu greutate</h1>
+
+        <div class="produs-price">
+          <strong><s class="price-old">450</s> 299,99 lei</strong>
+        </div>
+
+        <!-- Color picker -->
+        <div class="produs-colors">
+          <h4>Culoare</h4>
+          <div class="color-row">
+            <label class="color-swatch is-active" style="--c:#3C3F41">
+              <input type="radio" name="culoare" value="antracit" hidden checked />
+              <i></i>
+              <span>Antracit</span>
+            </label>
+            <label class="color-swatch" style="--c:#B78E8D">
+              <input type="radio" name="culoare" value="rose" hidden />
+              <i></i>
+              <span>Rose</span>
+            </label>
+            <div class="color-swatch is-disabled" style="--c:#2C353F" title="În curând">
+              <i></i>
+              <span>În curând</span>
             </div>
-          </div>
-          <div class="produs-thumbs">
-            <div class="produs-thumb is-active" data-thumb="0"></div>
-            <div class="produs-thumb" data-thumb="1" style="background-image: url('assets/hoodie-sleeve.png'); background-size: cover; background-position: center;"></div>
-            <div class="produs-thumb" data-thumb="2"></div>
-            <div class="produs-thumb" data-thumb="3"></div>
+            <div class="color-swatch is-disabled" style="--c:#87947D" title="În curând">
+              <i></i>
+              <span>În curând</span>
+            </div>
           </div>
         </div>
 
-        <!-- INFO -->
-        <div class="produs-info">
-          <p class="produs-breadcrumb">
-            <a href="index.html">Acasă</a> &nbsp;·&nbsp;
-            <a href="index.html#culori">Culori</a> &nbsp;·&nbsp;
-            <span id="breadcrumbColor">Antracit</span>
-          </p>
-
-          <h1 class="produs-title">Hanorac cu greutate</h1>
-          <p class="produs-subtitle" id="produsSubtitle">Antracit. Grounding. Te ține așezat în prezent.</p>
-
-          <div class="produs-price">
-            <strong>449 lei</strong>
-            <small>TVA inclus · Livrare 3–5 zile</small>
+        <!-- Size picker -->
+        <div class="produs-sizes">
+          <h4>
+            <span>Mărime</span>
+            <button type="button" class="size-guide-link" data-modal-open="sizeGuide">Ghid mărimi</button>
+          </h4>
+          <div class="size-row">
+            <button class="size-pill">XS</button>
+            <button class="size-pill">S</button>
+            <button class="size-pill is-active">M</button>
+            <button class="size-pill">L</button>
+            <button class="size-pill">XL</button>
+            <button class="size-pill">XXL</button>
           </div>
-
-          <!-- Color picker -->
-          <div class="produs-colors">
-            <h4>Culoare</h4>
-            <div class="color-row">
-              <label class="color-swatch is-active" style="--c:#3C3F41">
-                <input type="radio" name="culoare" value="antracit" hidden checked />
-                <i></i>
-                <span>Antracit</span>
-              </label>
-              <label class="color-swatch" style="--c:#B78E8D">
-                <input type="radio" name="culoare" value="rose" hidden />
-                <i></i>
-                <span>Rose</span>
-              </label>
-              <div class="color-swatch is-disabled" style="--c:#2C353F" title="În curând">
-                <i></i>
-                <span>În curând</span>
-              </div>
-              <div class="color-swatch is-disabled" style="--c:#87947D" title="În curând">
-                <i></i>
-                <span>În curând</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Size picker -->
-          <div class="produs-sizes">
-            <h4>
-              <span>Mărime</span>
-              <a href="#dimensiuni">Ghid mărimi</a>
-            </h4>
-            <div class="size-row">
-              <button class="size-pill">XS</button>
-              <button class="size-pill">S</button>
-              <button class="size-pill is-active">M</button>
-              <button class="size-pill">L</button>
-              <button class="size-pill">XL</button>
-              <button class="size-pill">XXL</button>
-            </div>
-          </div>
-
-          <!-- Actions -->
-          <div class="produs-actions">
-            <a href="#" class="btn btn-solid" data-magnetic>Cumpără acum · 449 lei</a>
-            <button class="icon-btn" aria-label="Salvează în lista de dorințe">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-              </svg>
-            </button>
-          </div>
-
-          <!-- Promises -->
-          <ul class="produs-promise">
-            <li>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span>Returnare gratuită în 30 de zile, fără întrebări.</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-              <span>Livrare gratuită la comenzi peste 400 lei.</span>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2L3 7v6c0 5 3.8 9.4 9 11 5.2-1.6 9-6 9-11V7l-9-5z"/></svg>
-              <span>Bumbac organic. Croit și cusut în România.</span>
-            </li>
-          </ul>
         </div>
+
+        <!-- Actions -->
+        <div class="produs-actions">
+          <button type="button" class="btn btn-solid" data-magnetic data-cart-open>Pre-comandă · 299,99 lei</button>
+          <button class="icon-btn" aria-label="Salvează în lista de dorințe">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Promises removed for compact layout -->
       </div>
     </section>
 
@@ -191,38 +179,6 @@
         <div class="deep-stat">
           <strong>30 spălări</strong>
           <span>fără pierdere semnificativă a structurii. Greutatea se păstrează.</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============== SIZE GUIDE ============== -->
-    <section id="dimensiuni" data-bg="cream" style="padding-top: 0;">
-      <div style="max-width: 880px; margin: 0 auto;">
-        <p class="eyebrow reveal-on-scroll">Ghid mărimi</p>
-        <h2 class="reveal-words" style="margin-bottom: 2rem;">Cum alegi mărimea potrivită.</h2>
-        <p class="reveal-on-scroll" style="margin-bottom: 2rem; max-width: 56ch;">
-          Croială lejeră, umeri căzuți. Recomandăm să alegi mărimea ta obișnuită
-          pentru un fit relaxat. Dacă vrei un fit oversized, ia o mărime mai mare.
-        </p>
-        <div class="reveal-on-scroll" style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem;">
-            <thead>
-              <tr style="border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);">
-                <th style="text-align: left; padding: 1rem 0.6rem; font-weight: 500; font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase; color: color-mix(in srgb, var(--ink) 60%, transparent);">Mărime</th>
-                <th style="text-align: left; padding: 1rem 0.6rem; font-weight: 500; font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase; color: color-mix(in srgb, var(--ink) 60%, transparent);">Piept (cm)</th>
-                <th style="text-align: left; padding: 1rem 0.6rem; font-weight: 500; font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase; color: color-mix(in srgb, var(--ink) 60%, transparent);">Lungime (cm)</th>
-                <th style="text-align: left; padding: 1rem 0.6rem; font-weight: 500; font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase; color: color-mix(in srgb, var(--ink) 60%, transparent);">Mânecă (cm)</th>
-              </tr>
-            </thead>
-            <tbody style="font-family: var(--serif); font-size: 1.05rem;">
-              <tr style="border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);"><td style="padding: 1rem 0.6rem;">XS</td><td style="padding: 1rem 0.6rem;">102</td><td style="padding: 1rem 0.6rem;">66</td><td style="padding: 1rem 0.6rem;">60</td></tr>
-              <tr style="border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);"><td style="padding: 1rem 0.6rem;">S</td><td style="padding: 1rem 0.6rem;">108</td><td style="padding: 1rem 0.6rem;">68</td><td style="padding: 1rem 0.6rem;">61</td></tr>
-              <tr style="border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);"><td style="padding: 1rem 0.6rem;">M</td><td style="padding: 1rem 0.6rem;">114</td><td style="padding: 1rem 0.6rem;">70</td><td style="padding: 1rem 0.6rem;">62</td></tr>
-              <tr style="border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);"><td style="padding: 1rem 0.6rem;">L</td><td style="padding: 1rem 0.6rem;">120</td><td style="padding: 1rem 0.6rem;">72</td><td style="padding: 1rem 0.6rem;">63</td></tr>
-              <tr style="border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);"><td style="padding: 1rem 0.6rem;">XL</td><td style="padding: 1rem 0.6rem;">126</td><td style="padding: 1rem 0.6rem;">74</td><td style="padding: 1rem 0.6rem;">64</td></tr>
-              <tr><td style="padding: 1rem 0.6rem;">XXL</td><td style="padding: 1rem 0.6rem;">132</td><td style="padding: 1rem 0.6rem;">76</td><td style="padding: 1rem 0.6rem;">65</td></tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
@@ -281,12 +237,21 @@
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Cât durează livrarea?</span>
+          <span>Când primesc hanoracul dacă pre-comand acum?</span>
           <i></i>
         </button>
         <div class="faq-a">
-          <p>3–5 zile lucrătoare prin curier, oriunde în România. Livrare gratuită la comenzi peste 400 lei.
-          Pentru comenzi internaționale, scrie-ne pe hello@theoovi.com.</p>
+          <p>Lansăm pe 1 octombrie 2026. Toate pre-comenzile pleacă în săptămâna lansării — curierul ajunge la tine în 3–5 zile lucrătoare. Livrarea e gratuită pentru pre-comenzi, oriunde în România.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>De ce e mai ieftin la pre-comandă?</span>
+          <i></i>
+        </button>
+        <div class="faq-a">
+          <p>299,99 lei vs. 450 lei la preț final — diferența nu e un truc de marketing, e o investiție mutuală. Pre-comenzile ne ajută să producem prima serie fără să împrumutăm bani la dobândă; tu primești prețul real al unei serii mici. După 1 octombrie, prețul revine la 450 lei pentru re-stocuri.</p>
         </div>
       </div>
 
@@ -311,13 +276,111 @@
         </svg>
       </div>
       <h2 class="closing-title reveal-words">Începe cu o culoare.<br /><em>Restul vine de la sine.</em></h2>
-      <p class="closing-sub reveal-on-scroll">30 de zile să-l încerci. Dacă nu se simte ca al tău, îți trimitem banii înapoi.</p>
-      <a href="#cumpara" class="btn btn-solid btn-large" data-magnetic>Cumpără acum · 449 lei</a>
+      <p class="closing-sub reveal-on-scroll">Pre-comandă la 299,99 lei. 30 de zile să-l încerci după livrare — dacă nu se simte ca al tău, primești banii înapoi.</p>
+      <a href="#cumpara" class="btn btn-solid btn-large" data-magnetic>Pre-comandă acum · 299,99 lei</a>
     </section>
   </main>
 
+  <!-- Mini-cart drawer -->
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-labelledby="cartTitle" role="dialog" aria-modal="true">
+    <div class="cart-head">
+      <h3 id="cartTitle">Pre-comanda ta</h3>
+      <button class="cart-close" data-cart-close aria-label="Închide coșul">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6l-12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="cart-body">
+      <div id="cartItemsList">
+        <!-- Filled by JS -->
+      </div>
+
+      <div class="cart-perks">
+        <p>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Plătești azi, primești pe 1 octombrie 2026.
+        </p>
+        <p>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/></svg>
+          Livrare gratuită pentru toate pre-comenzile.
+        </p>
+        <p>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          30 de zile garantate, returnare fără întrebări.
+        </p>
+      </div>
+    </div>
+
+    <div class="cart-foot">
+      <div class="cart-totals">
+        <span>Total</span>
+        <strong id="cartTotal">299,99 lei</strong>
+      </div>
+      <div style="display: grid; gap: 0.6rem;">
+        <a href="cos.html" class="btn btn-solid">Vezi coșul</a>
+        <a href="comanda.html" class="btn btn-ghost">Plătește direct</a>
+      </div>
+      <small>Plată criptată end-to-end · Datele tale rămân ale tale.</small>
+    </div>
+  </aside>
+
+  <!-- Size guide modal -->
+  <div class="modal" id="sizeGuide" role="dialog" aria-modal="true" aria-labelledby="sizeGuideTitle" data-lenis-prevent>
+    <div class="modal-card">
+      <button class="modal-close" data-modal-close aria-label="Închide">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6l-12 12"/>
+        </svg>
+      </button>
+      <p class="eyebrow">Ghid mărimi</p>
+      <h2 id="sizeGuideTitle">Cum alegi mărimea potrivită.</h2>
+      <p class="modal-sub">
+        Croială lejeră, umeri căzuți. Pentru un fit relaxat, alege mărimea ta obișnuită.
+        Pentru oversized, ia una mai mare. Dacă ești între două, mergi pe cea mai mare —
+        e mai ușor să cazi în greutate decât să te strângă.
+      </p>
+
+      <table class="size-table">
+        <thead>
+          <tr>
+            <th>Mărime</th>
+            <th>Piept (cm)</th>
+            <th>Lungime (cm)</th>
+            <th>Mânecă (cm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>XS</td><td>102</td><td>66</td><td>60</td></tr>
+          <tr><td>S</td><td>108</td><td>68</td><td>61</td></tr>
+          <tr><td>M</td><td>114</td><td>70</td><td>62</td></tr>
+          <tr><td>L</td><td>120</td><td>72</td><td>63</td></tr>
+          <tr><td>XL</td><td>126</td><td>74</td><td>64</td></tr>
+          <tr><td>XXL</td><td>132</td><td>76</td><td>65</td></tr>
+        </tbody>
+      </table>
+
+      <div class="size-tips">
+        <div class="size-tip">
+          <h4>Cum măsori pieptul</h4>
+          <p>Cu o bandă moale, în jurul celei mai largi părți a pieptului, sub brațe. Stai relaxat, nu trage adânc aer.</p>
+        </div>
+        <div class="size-tip">
+          <h4>Cum măsori lungimea</h4>
+          <p>De la baza gâtului (lângă claviculă) drept în jos. Lungimea pe care o vrei să cadă hanoracul.</p>
+        </div>
+      </div>
+
+      <p class="modal-sub" style="font-size: 0.85rem; margin-top: 1.2rem; margin-bottom: 0;">
+        Tot nesigur? Scrie-ne pe <a href="mailto:hello@theoovi.com" style="color: var(--midnight-navy); text-decoration: underline; text-underline-offset: 3px;">hello@theoovi.com</a> cu măsurătorile tale — îți recomandăm mărimea într-o oră.
+      </p>
+    </div>
+  </div>
+
   <a href="#cumpara" class="floating-cta" id="floatingCta" data-magnetic>
-    <span>Cumpără · 449 lei</span>
+    <span>Pre-comandă · 299,99 lei</span>
     <svg viewBox="0 0 24 12" width="28" height="12" aria-hidden="true">
       <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
@@ -363,10 +426,12 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="cart.js"></script>
   <script src="script.js"></script>
   <script>
     // Produs-specific interactivity
     (() => {
+
       const colorData = {
         antracit: { c: '#3C3F41', name: 'Antracit', sub: 'Antracit. Grounding. Te ține așezat în prezent.' },
         rose:     { c: '#B78E8D', name: 'Rose',     sub: 'Rose. Căldură emoțională. Scade cortizolul ca o îmbrățișare.' },
@@ -386,7 +451,18 @@
 
       const apply = (val) => {
         const data = colorData[val] || colorData.antracit;
-        if (cover) cover.style.setProperty('--c', data.c);
+        if (cover) {
+          cover.style.setProperty('--c', data.c);
+          if (val === 'antracit') {
+            cover.style.backgroundImage = "url('assets/hoodie_anthracite_full.png')";
+            cover.style.backgroundSize = "cover";
+            cover.style.backgroundPosition = "center";
+            cover.classList.remove('no-image');
+          } else {
+            cover.style.backgroundImage = "none";
+            cover.classList.add('no-image');
+          }
+        }
         if (subtitle) subtitle.textContent = data.sub;
         if (breadcrumb) breadcrumb.textContent = data.name;
         document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('is-active'));
@@ -428,6 +504,144 @@
           document.querySelectorAll('.produs-thumb').forEach(x => x.classList.remove('is-active'));
           t.classList.add('is-active');
         });
+      });
+
+      /* ===== Modal open/close ===== */
+      const openModal = (id) => {
+        const m = document.getElementById(id);
+        if (!m) return;
+        m.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        // Focus the close button
+        setTimeout(() => m.querySelector('[data-modal-close]')?.focus(), 100);
+      };
+      const closeModal = (m) => {
+        m.classList.remove('is-open');
+        document.body.style.overflow = '';
+      };
+
+      document.querySelectorAll('[data-modal-open]').forEach((btn) => {
+        btn.addEventListener('click', () => openModal(btn.dataset.modalOpen));
+      });
+      document.querySelectorAll('.modal').forEach((m) => {
+        m.addEventListener('click', (e) => {
+          if (e.target === m || e.target.closest('[data-modal-close]')) closeModal(m);
+        });
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal.is-open').forEach(closeModal);
+        }
+      });
+
+      /* ===== Mini-cart drawer (add-to-cart) ===== */
+      const drawer = document.getElementById('cartDrawer');
+      const cartOverlay = document.getElementById('cartOverlay');
+      const cartTotal = document.getElementById('cartTotal');
+      const cartItemsList = document.getElementById('cartItemsList');
+
+      const colorHex = { antracit: '#3C3F41', rose: '#B78E8D' };
+      const colorName = (k) => window.OoviCatalog?.colors[k]?.name || 'Antracit';
+
+      const renderDrawerFromCart = () => {
+        const items = OoviCart.read();
+        
+        if (!items.length) {
+          cartItemsList.innerHTML = '<p style="text-align: center; opacity: 0.6; padding: 2rem 0;">Coșul tău este gol.</p>';
+          if (cartTotal) cartTotal.textContent = OoviCart.formatPrice(0);
+          return;
+        }
+
+        const renderItem = (item) => `
+          <div class="cart-item">
+            <div class="cart-item-img" style="--c:${colorHex[item.color] || '#3C3F41'}">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="5"/>
+                <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2.2"/>
+              </svg>
+            </div>
+            <div class="cart-item-info">
+              <h4>${item.name}</h4>
+              <p class="cart-item-meta">${colorName(item.color)} · ${item.size}</p>
+              <div class="cart-item-foot">
+                <div class="cart-qty">
+                  <button data-qty="-1" data-id="${item.id}" aria-label="Mai puțin">−</button>
+                  <span>${item.qty}</span>
+                  <button data-qty="+1" data-id="${item.id}" aria-label="Mai mult">+</button>
+                </div>
+                <button class="cart-item-remove" data-action="remove" data-id="${item.id}" style="background:none;border:none;color:inherit;opacity:0.6;cursor:pointer;font-size:0.8rem;text-decoration:underline;">Elimină</button>
+                <span class="cart-item-price">${OoviCart.formatPrice(item.price)}</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        cartItemsList.innerHTML = items.map(renderItem).join('');
+        if (cartTotal) cartTotal.textContent = OoviCart.formatPrice(OoviCart.subtotal());
+
+        // Wire up events for the newly rendered items
+        cartItemsList.querySelectorAll('[data-qty]').forEach((b) => {
+          b.addEventListener('click', () => {
+            const id = b.dataset.id;
+            const delta = parseInt(b.dataset.qty, 10);
+            const item = OoviCart.read().find(i => i.id === id);
+            if (!item) return;
+            const newQty = item.qty + delta;
+            if (newQty <= 0) OoviCart.remove(id);
+            else OoviCart.updateQty(id, newQty);
+            renderDrawerFromCart();
+          });
+        });
+
+        cartItemsList.querySelectorAll('[data-action="remove"]').forEach((b) => {
+          b.addEventListener('click', () => {
+            OoviCart.remove(b.dataset.id);
+            renderDrawerFromCart();
+          });
+        });
+      };
+
+      const openCartDrawer = () => {
+        drawer.classList.add('is-open');
+        cartOverlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      };
+      const closeCartDrawer = () => {
+        drawer.classList.remove('is-open');
+        cartOverlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+      };
+
+      // "Pre-comandă · 299,99 lei" → add to cart & open drawer
+      const addToCart = () => {
+        const color = document.querySelector('input[name="culoare"]:checked')?.value || 'antracit';
+        const sizeBtn = document.querySelector('.size-pill.is-active');
+        const size = sizeBtn?.textContent || 'M';
+        OoviCart.add({ color, size, qty: 1 });
+        renderDrawerFromCart();
+        openCartDrawer();
+      };
+
+      document.querySelectorAll('[data-cart-open]').forEach((b) =>
+        b.addEventListener('click', (e) => { e.preventDefault(); addToCart(); })
+      );
+      document.querySelectorAll('[data-cart-close]').forEach((b) =>
+        b.addEventListener('click', closeCartDrawer)
+      );
+      cartOverlay.addEventListener('click', closeCartDrawer);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeCartDrawer();
+      });
+
+      // React to cart changes from elsewhere
+      window.addEventListener('oovi:cart-changed', () => {
+        if (drawer.classList.contains('is-open')) renderDrawerFromCart();
+      });
+
+      // Floating CTA on produs.html → add to cart
+      document.querySelector('#floatingCta')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        addToCart();
       });
     })();
   </script>

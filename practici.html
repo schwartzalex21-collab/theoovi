@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practici — The Oovi</title>
+  <meta name="description" content="Patru practici scurte pentru a-ți readuce sistemul nervos în echilibru. Box breathing, 4-7-8, respirație coerentă, oftatul fiziologic. Ghidate vizual." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/oovi-logo.svg" />
+</head>
+<body class="page-practici">
+
+  <!-- Pre-launch banner -->
+  <div class="prelaunch" role="status">
+    <i aria-hidden="true"></i>
+    <span><strong>Pre-comandă deschisă</strong> <span class="prelaunch-detail">· Livrare începând cu 1 octombrie · 299,99 lei <s>450</s></span></span>
+  </div>
+
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <svg class="loader-mark" viewBox="0 0 100 100" width="72" height="72">
+      <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="3" />
+      <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="1.4" />
+    </svg>
+  </div>
+
+  <header class="nav">
+    <a href="index.html" class="nav-mark" aria-label="The Oovi — acasă">
+      <svg viewBox="0 0 100 100" width="26" height="26" aria-hidden="true">
+        <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="6" />
+        <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2.5" />
+      </svg>
+      <span class="nav-word">THE&nbsp;OOVI</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="produs.html">Produs</a>
+      <a href="index.html#stiinta">Știință</a>
+      <a href="practici.html" aria-current="page">Practici</a>
+      <a href="blog.html">Jurnal</a>
+      <a href="despre.html">Despre</a>
+    </nav>
+    <div class="nav-end">
+      <a href="cos.html" class="nav-cart" aria-label="Coșul tău">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="nav-cart-badge" data-cart-count>0</span>
+      </a>
+      <a href="produs.html" class="nav-cta" data-magnetic>Pre-comandă</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============== INTRO ============== -->
+    <section class="practici-hero">
+      <p class="eyebrow reveal-on-scroll">Practici</p>
+      <h1 class="practici-h1 reveal-words">
+        Patru practici scurte. Patru moduri de a-ți readuce corpul în prezent.
+      </h1>
+      <p class="practici-intro reveal-on-scroll">
+        Niciuna nu durează mai mult de cinci minute. Le folosesc terapeuții, sportivii,
+        anestezioștii înainte de operații, părinții la 3 dimineața. Sunt aici, gratuit, oricând ai nevoie.
+        Alege una și începe.
+      </p>
+    </section>
+
+    <!-- ============== PICKER ============== -->
+    <section class="practici-picker">
+      <div class="picker-grid">
+
+        <button class="practice-card is-active" data-practice="box">
+          <div class="practice-card-viz">
+            <svg viewBox="0 0 100 100" width="56" height="56" aria-hidden="true">
+              <rect x="22" y="22" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="practice-card-body">
+            <h3>Box Breathing</h3>
+            <p>4-4-4-4. Calm imediat, focus.</p>
+            <span class="practice-card-meta">4 min · 4 cicluri</span>
+          </div>
+        </button>
+
+        <button class="practice-card" data-practice="four-seven-eight">
+          <div class="practice-card-viz">
+            <svg viewBox="0 0 100 100" width="56" height="56" aria-hidden="true">
+              <circle cx="50" cy="50" r="26" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="practice-card-body">
+            <h3>4-7-8</h3>
+            <p>Pentru adormit. Pentru anxietate acută.</p>
+            <span class="practice-card-meta">3 min · 4 cicluri</span>
+          </div>
+        </button>
+
+        <button class="practice-card" data-practice="coherent">
+          <div class="practice-card-viz">
+            <svg viewBox="0 0 100 100" width="56" height="56" aria-hidden="true">
+              <path d="M10 50 Q30 20 50 50 T90 50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="practice-card-body">
+            <h3>Respirație coerentă</h3>
+            <p>5-5. Stare de bază, susținută.</p>
+            <span class="practice-card-meta">5 min · 30 cicluri</span>
+          </div>
+        </button>
+
+        <button class="practice-card" data-practice="sigh">
+          <div class="practice-card-viz">
+            <svg viewBox="0 0 100 100" width="56" height="56" aria-hidden="true">
+              <path d="M20 60 Q35 30 50 50 Q60 60 80 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="practice-card-body">
+            <h3>Oftatul fiziologic</h3>
+            <p>Reset rapid. 1 minut, oriunde.</p>
+            <span class="practice-card-meta">1 min · 5 cicluri</span>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- ============== PLAYER ============== -->
+    <section class="practici-player" id="player">
+
+      <!-- BOX BREATHING -->
+      <div class="practice-stage is-active" data-stage="box" data-bg="navy">
+        <div class="stage-info">
+          <p class="stage-label">Practica 1 / Box Breathing</p>
+          <h2>Inspiră în patru. Ține în patru. Expiră în patru. Ține în patru.</h2>
+          <p class="stage-desc">
+            Folosit de Navy SEALs înainte de misiuni și de chirurgi înainte de operații.
+            Un singur ciclu îți încetinește pulsul. Patru cicluri îți schimbă starea.
+          </p>
+          <div class="stage-controls">
+            <button class="btn btn-solid practice-toggle" data-cycle="16000" data-cycles="4" data-phases='["Inspiră","Ține","Expiră","Ține"]' data-phase-durations="[4000,4000,4000,4000]" data-shape="square">
+              <span class="practice-toggle-text">Începe</span>
+            </button>
+            <span class="practice-cycle-counter">Ciclu <strong class="practice-cycle-current">0</strong> din <strong class="practice-cycle-total">4</strong></span>
+          </div>
+        </div>
+
+        <div class="stage-viz">
+          <div class="viz-box">
+            <div class="viz-box-glow"></div>
+            <svg viewBox="0 0 300 300" class="viz-box-svg" aria-hidden="true">
+              <rect x="40" y="40" width="220" height="220" fill="none"
+                stroke="currentColor" stroke-width="1.5" rx="4" ry="4" opacity="0.18"/>
+              <rect x="40" y="40" width="220" height="220" fill="none"
+                stroke="currentColor" stroke-width="2" rx="4" ry="4"
+                pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"
+                class="viz-box-trace"/>
+            </svg>
+            <div class="viz-box-dot"></div>
+            <p class="stage-phase" data-phase>Începe când ești gata</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4-7-8 -->
+      <div class="practice-stage" data-stage="four-seven-eight" data-bg="sage">
+        <div class="stage-info">
+          <p class="stage-label">Practica 2 / 4-7-8</p>
+          <h2>Inspiră patru. Reține șapte. Expiră opt.</h2>
+          <p class="stage-desc">
+            Tehnica lui Dr. Andrew Weil pentru adormit rapid și pentru atacuri de panică.
+            Expirația lungă activează nervul vag — comutatorul fizic al calmului.
+            După patru cicluri, mulți oameni adorm înainte să termine.
+          </p>
+          <div class="stage-controls">
+            <button class="btn btn-solid practice-toggle" data-cycle="19000" data-cycles="4" data-phases='["Inspiră","Reține","Expiră"]' data-phase-durations="[4000,7000,8000]" data-shape="lung">
+              <span class="practice-toggle-text">Începe</span>
+            </button>
+            <span class="practice-cycle-counter">Ciclu <strong class="practice-cycle-current">0</strong> din <strong class="practice-cycle-total">4</strong></span>
+          </div>
+        </div>
+
+        <div class="stage-viz">
+          <div class="viz-lung">
+            <div class="viz-lung-glow"></div>
+            <div class="viz-lung-circle"></div>
+            <p class="stage-phase" data-phase>Începe când ești gata</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- COHERENT BREATHING -->
+      <div class="practice-stage" data-stage="coherent" data-bg="rose">
+        <div class="stage-info">
+          <p class="stage-label">Practica 3 / Respirație coerentă</p>
+          <h2>Inspiră cinci. Expiră cinci. Repetă, cu valul.</h2>
+          <p class="stage-desc">
+            Șase respirații pe minut — frecvența la care variabilitatea ritmului cardiac
+            atinge maxim. Nu este o tehnică de „criză", e o stare de bază.
+            Cinci minute pe zi schimbă, în timp, modul în care reacționezi la stres.
+          </p>
+          <div class="stage-controls">
+            <button class="btn btn-solid practice-toggle" data-cycle="10000" data-cycles="30" data-phases='["Inspiră","Expiră"]' data-phase-durations="[5000,5000]" data-shape="wave">
+              <span class="practice-toggle-text">Începe</span>
+            </button>
+            <span class="practice-cycle-counter">Ciclu <strong class="practice-cycle-current">0</strong> din <strong class="practice-cycle-total">30</strong></span>
+          </div>
+        </div>
+
+        <div class="stage-viz">
+          <div class="viz-wave">
+            <svg viewBox="0 0 600 200" class="viz-wave-svg" aria-hidden="true" preserveAspectRatio="none">
+              <path d="M0 100 Q150 30 300 100 T600 100" fill="none" stroke="currentColor" stroke-width="2" opacity="0.18"/>
+              <path d="M0 100 Q150 30 300 100 T600 100" fill="none" stroke="currentColor" stroke-width="2.5"
+                pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" class="viz-wave-trace"/>
+              <circle r="6" fill="currentColor" class="viz-wave-dot">
+                <animateMotion dur="10s" repeatCount="indefinite" begin="indefinite" id="waveMotion"
+                  path="M0 100 Q150 30 300 100 T600 100"/>
+              </circle>
+            </svg>
+            <p class="stage-phase" data-phase>Începe când ești gata</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHYSIOLOGICAL SIGH -->
+      <div class="practice-stage" data-stage="sigh" data-bg="oat">
+        <div class="stage-info">
+          <p class="stage-label">Practica 4 / Oftatul fiziologic</p>
+          <h2>Inspiră scurt. Mai inspiră scurt. Expiră lung.</h2>
+          <p class="stage-desc">
+            Două inspirații rapide consecutive, urmate de o expirație lungă pe gură.
+            Reumple alveolele colapsate, evacuează rapid dioxidul de carbon, scade pulsul în câteva secunde.
+            Un singur sigh schimbă vizibil starea. Cinci, garantat.
+          </p>
+          <div class="stage-controls">
+            <button class="btn btn-solid practice-toggle" data-cycle="8000" data-cycles="5" data-phases='["Inspiră scurt","Mai inspiră","Expiră lung"]' data-phase-durations="[1500,1500,5000]" data-shape="sigh">
+              <span class="practice-toggle-text">Începe</span>
+            </button>
+            <span class="practice-cycle-counter">Ciclu <strong class="practice-cycle-current">0</strong> din <strong class="practice-cycle-total">5</strong></span>
+          </div>
+        </div>
+
+        <div class="stage-viz">
+          <div class="viz-sigh">
+            <div class="viz-sigh-glow"></div>
+            <div class="viz-sigh-bubble"></div>
+            <p class="stage-phase" data-phase>Începe când ești gata</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPLETED OVERLAY -->
+      <div class="practice-done" id="practiceDone">
+        <p class="eyebrow">Gata</p>
+        <h3>Bună treabă. Cum te simți acum?</h3>
+        <p>Lasă să se așeze câteva clipe. Apoi alege altă practică, sau întoarce-te la ce făceai.</p>
+        <div class="practice-done-actions">
+          <button class="btn btn-solid" id="practiceAnother">Mai fă una</button>
+          <a href="produs.html" class="btn btn-ghost">Vezi hanoracul</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== WHEN TO USE ============== -->
+    <section class="when" data-bg="cream">
+      <p class="eyebrow reveal-on-scroll">Ghid practic</p>
+      <h2 class="reveal-words">Care practică, pentru ce moment.</h2>
+
+      <div class="when-grid">
+        <div class="when-item reveal-on-scroll">
+          <h4>Înainte de o întâlnire grea</h4>
+          <p>Box Breathing. Patru cicluri, 4 minute. Scade pulsul, ridică claritatea — fără să simți că te-ai „liniștit forțat".</p>
+        </div>
+        <div class="when-item reveal-on-scroll" data-delay="0.1">
+          <h4>Noaptea, când nu adormi</h4>
+          <p>4-7-8. Întins în pat, ochii închiși. Patru cicluri, repetate dacă e nevoie. Cei mai mulți adorm înainte de al cincilea.</p>
+        </div>
+        <div class="when-item reveal-on-scroll" data-delay="0.2">
+          <h4>Dimineața, ca rutină</h4>
+          <p>Respirație coerentă, 5 minute. Stabilește tonul pentru sistemul nervos pentru tot restul zilei.</p>
+        </div>
+        <div class="when-item reveal-on-scroll" data-delay="0.3">
+          <h4>Sub stres acut, în public</h4>
+          <p>Oftatul fiziologic. Un singur ciclu, în liniște. Nimeni nu observă. Tu simți diferența în 10 secunde.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== PAIRED WITH PRODUCT ============== -->
+    <section class="paired" data-bg="cream">
+      <div class="paired-grid">
+        <div class="paired-text">
+          <p class="eyebrow reveal-on-scroll">Combinație</p>
+          <h2 class="reveal-words">Practicile sunt gratuite. Hanoracul amplifică efectul.</h2>
+          <p class="reveal-on-scroll">
+            Greutatea de 420 GSM exercită presiunea constantă pe care sistemul nervos parasimpatic
+            o recunoaște ca siguranță. În timpul unei practici de respirație, efectul se cumulează:
+            corpul primește două semnale de calm în același timp — respirația lentă și îmbrățișarea
+            constantă.
+          </p>
+          <p class="reveal-on-scroll" data-delay="0.1">
+            Nu e o promisiune medicală. E pur și simplu felul în care funcționează corpul.
+          </p>
+          <a href="produs.html" class="btn btn-solid" data-magnetic>Vezi hanoracul</a>
+        </div>
+        <div class="paired-viz">
+          <div class="paired-mark">
+            <svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true">
+              <circle class="ring ring-outer" cx="100" cy="100" r="72" fill="none" stroke="currentColor" stroke-width="6" />
+              <circle class="ring ring-inner" cx="100" cy="100" r="44" fill="none" stroke="currentColor" stroke-width="2.2" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a href="produs.html" class="floating-cta" id="floatingCta" data-magnetic>
+    <span>Pre-comandă · 299,99 lei</span>
+    <svg viewBox="0 0 24 12" width="28" height="12" aria-hidden="true">
+      <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-mark">
+          <svg viewBox="0 0 100 100" width="30" height="30" aria-hidden="true">
+            <circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width="6" />
+            <circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="2.5" />
+          </svg>
+          <span>THE OOVI</span>
+        </div>
+        <p class="footer-tag">Gently Heavy. Croit în România. Purtat oriunde.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Magazin</h4>
+        <a href="produs.html">Hanorac Antracit</a>
+        <a href="produs.html">Hanorac Rose</a>
+        <a href="index.html#culori">Roadmap nuanțe</a>
+      </div>
+      <div class="footer-col">
+        <h4>Citește</h4>
+        <a href="blog.html">Jurnal</a>
+        <a href="index.html#stiinta">Știință</a>
+        <a href="practici.html">Practici</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@theoovi.com">hello@theoovi.com</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The Oovi</span>
+      <span>Respiră · Derulează · Repetă</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="cart.js"></script>
+  <script src="script.js"></script>
+  <script src="practici.js"></script>
+</body>
+</html>
